@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasang Baru</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
+        .mobile-container { max-width: 480px; min-height: 100vh; margin: 0 auto; background-color: #f8fafc; position: relative; box-shadow: 0 0 40px rgba(0, 0, 0, 0.05); overflow: hidden; display: flex; flex-direction: column; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .modern-input { appearance: none; background: #ffffff; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600; padding: 14px 16px; border-radius: 12px; outline: none; width: 100%; transition: all 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .modern-input:focus { border-color: #47c4f4; box-shadow: 0 0 0 3px rgba(71, 196, 244, 0.15); }
+        
+        /* Navigation FAB */
+        .nav-fab {
+            background: linear-gradient(135deg, #2a81d4 0%, #1f6db8 100%);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 10px 25px rgba(42, 129, 212, 0.4);
+            margin-top: -45px;
+            border: 6px solid #fafbfc;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-fab:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(42, 129, 212, 0.5);
+        }
+        /* Bottom Nav */
+        .bottom-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 440px;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 25px;
+            z-index: 50;
+        }
+        .nav-item {
+            color: #b0bec5;
+            font-size: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .nav-item.active {
+            color: white;
+            background: linear-gradient(135deg, #2a81d4, #4798e1);
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -10px;
+            font-size: 18px;
+            box-shadow: 0 10px 20px rgba(42, 129, 212, 0.3);
+            gap: 2px;
+        }
+        .nav-item.active span { display: none; }
+    </style>
+</head>
+<body>
+<div class="mobile-container pb-28">
+    <!-- Modern Header -->
+    <div class="glass-header sticky top-0 z-40 px-6 py-4 flex items-center gap-4">
+        <h1 class="text-[17px] font-extrabold text-gray-800 tracking-tight">Pasang Baru</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 px-5 pt-4 flex flex-col gap-4 overflow-y-auto hide-scrollbar">
+        
+        <!-- Tab Switcher -->
+        <div class="bg-gray-200/50 p-1 rounded-xl flex mb-2 w-full max-w-[320px] mx-auto">
+            <button id="tab-baru" class="flex-1 py-2.5 text-[11px] font-extrabold rounded-lg bg-white text-[#47c4f4] shadow-sm transition-all" onclick="switchTab('baru')">Pengajuan Pasang Baru</button>
+            <button id="tab-monitoring" class="flex-1 py-2.5 text-[11px] font-bold text-gray-500 rounded-lg hover:text-gray-700 transition-all" onclick="switchTab('monitoring')">Monitoring</button>
+        </div>
+
+        <!-- FORM PENGAJUAN -->
+        <div id="content-baru" class="flex flex-col gap-4 animate-fade-in">
+            <div>
+                <input type="text" placeholder="Nama Lengkap Sesuai KTP" class="modern-input">
+            </div>
+            <div>
+                <input type="text" placeholder="Nomor KTP" class="modern-input">
+            </div>
+            <div>
+                <input type="tel" placeholder="Nomor Telepon / WhatsApp" class="modern-input">
+            </div>
+            <div>
+                <textarea placeholder="Alamat Pemasangan" class="modern-input h-24 resize-none"></textarea>
+            </div>
+            <button class="w-full bg-[#2a81d4] hover:bg-[#1f6db8] text-white text-[14px] font-extrabold py-3.5 rounded-2xl shadow-md transition-all mt-2">
+                Kirim Pengajuan
+            </button>
+        </div>
+
+        <!-- FORM MONITORING -->
+        <div id="content-monitoring" class="hidden flex-col items-center gap-4 animate-fade-in w-full h-full pt-10">
+            <div class="relative w-full max-w-xs mb-8">
+                <input type="text" placeholder="Nomor pasang baru / nomor telepon Anda" class="w-full bg-white text-gray-800 text-[12px] font-bold px-5 py-4 pr-14 rounded-2xl outline-none focus:ring-2 focus:ring-[#47c4f4]/30 shadow-md border border-gray-100 transition-all">
+                <div class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#47c4f4] hover:bg-[#20b2eb] text-white rounded-xl flex items-center justify-center shadow-md cursor-pointer transition">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center pt-5">
+                <div class="w-24 h-24 bg-blue-50 text-[#47c4f4] rounded-full flex items-center justify-center text-4xl mb-6 shadow-sm border border-blue-100">
+                    <i class="fa-solid fa-clipboard-check text-blue-400"></i>
+                </div>
+                <div class="bg-[#fef3c7] text-[#92400e] text-[11px] font-extrabold px-6 py-2.5 rounded-xl shadow-sm text-center">
+                    Cek status pengajuan pasang baru Anda
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="window.location.href='mobile_ui.html'"><i class="fa-solid fa-house"></i><span class="text-[9px] font-bold">Home</span></div>
+        <div class="nav-item active" onclick="window.location.href='pasang_baru.html'"><i class="fa-solid fa-house-medical"></i><span class="text-[9px] font-bold">Pasang Baru</span></div>
+        
+        <!-- Laporan FAB -->
+        <div class="nav-fab" onclick="window.location.href='laporan.html'">
+            <i class="fa-solid fa-bullhorn"></i>
+        </div>
+
+        <div class="nav-item" onclick="window.location.href='pengaduan.html'"><i class="fa-solid fa-comments"></i><span class="text-[9px] font-bold">Pengaduan</span></div>
+        <div class="nav-item" onclick="window.location.href='akun_saya.html'"><i class="fa-regular fa-user"></i><span class="text-[9px] font-bold">Profil</span></div>
+    </div>
+</div>
+
+<style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.3s ease forwards; }
+</style>
+
+<script>
+    function switchTab(tabName) {
+        const tabBaru = document.getElementById('tab-baru');
+        const tabMonitoring = document.getElementById('tab-monitoring');
+        const contentBaru = document.getElementById('content-baru');
+        const contentMonitoring = document.getElementById('content-monitoring');
+
+        if (tabName === 'baru') {
+            tabBaru.className = "flex-1 py-2.5 text-[11px] font-extrabold rounded-lg bg-white text-[#47c4f4] shadow-sm transition-all";
+            tabMonitoring.className = "flex-1 py-2.5 text-[11px] font-bold text-gray-500 rounded-lg hover:text-gray-700 transition-all";
+            contentBaru.classList.remove('hidden');
+            contentBaru.classList.add('flex');
+            contentMonitoring.classList.remove('flex');
+            contentMonitoring.classList.add('hidden');
+        } else {
+            tabMonitoring.className = "flex-1 py-2.5 text-[11px] font-extrabold rounded-lg bg-white text-[#47c4f4] shadow-sm transition-all";
+            tabBaru.className = "flex-1 py-2.5 text-[11px] font-bold text-gray-500 rounded-lg hover:text-gray-700 transition-all";
+            contentMonitoring.classList.remove('hidden');
+            contentMonitoring.classList.add('flex');
+            contentBaru.classList.remove('flex');
+            contentBaru.classList.add('hidden');
+        }
+    }
+</script>
+</body>
+</html>

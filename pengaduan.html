@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaduan Layanan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
+        .mobile-container { max-width: 480px; min-height: 100vh; margin: 0 auto; background-color: #f8fafc; position: relative; box-shadow: 0 0 40px rgba(0, 0, 0, 0.05); overflow: hidden; display: flex; flex-direction: column; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .modern-input { appearance: none; background: #ffffff; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600; padding: 14px 16px; border-radius: 12px; outline: none; width: 100%; transition: all 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .modern-input:focus { border-color: #47c4f4; box-shadow: 0 0 0 3px rgba(71, 196, 244, 0.15); }
+        .custom-select { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem; }
+        
+        /* Navigation FAB */
+        .nav-fab {
+            background: linear-gradient(135deg, #2a81d4 0%, #1f6db8 100%);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 10px 25px rgba(42, 129, 212, 0.4);
+            margin-top: -45px;
+            border: 6px solid #fafbfc;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-fab:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(42, 129, 212, 0.5);
+        }
+        /* Bottom Nav */
+        .bottom-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 440px;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 25px;
+            z-index: 50;
+        }
+        .nav-item {
+            color: #b0bec5;
+            font-size: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .nav-item.active {
+            color: white;
+            background: linear-gradient(135deg, #2a81d4, #4798e1);
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -10px;
+            font-size: 18px;
+            box-shadow: 0 10px 20px rgba(42, 129, 212, 0.3);
+            gap: 2px;
+        }
+        .nav-item.active span { display: none; }
+    </style>
+</head>
+<body>
+<div class="mobile-container">
+    <!-- Modern Header -->
+    <div class="glass-header sticky top-0 z-50 px-6 py-4 flex items-center gap-4">
+        <a href="mobile_ui.html" class="w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full flex items-center justify-center text-gray-700 transition shadow-sm border border-gray-100">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <h1 class="text-[17px] font-extrabold text-gray-800 tracking-tight">Pengaduan</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 px-5 pt-4 pb-24 flex flex-col gap-4 overflow-y-auto hide-scrollbar relative">
+        
+        <!-- Tab Switcher -->
+        <div class="bg-gray-200/50 p-1 rounded-xl flex mb-2 w-full max-w-[320px] mx-auto">
+            <button id="tab-baru" class="flex-1 py-2.5 text-[11px] font-extrabold rounded-lg bg-white text-[#47c4f4] shadow-sm transition-all" onclick="switchTab('baru')">Pengaduan Baru</button>
+            <button id="tab-monitoring" class="flex-1 py-2.5 text-[11px] font-bold text-gray-500 rounded-lg hover:text-gray-700 transition-all" onclick="switchTab('monitoring')">Monitoring</button>
+        </div>
+
+        <!-- FORM PENGADUAN BARU -->
+        <div id="content-baru" class="flex flex-col gap-4 animate-fade-in">
+            <!-- Pilih nomor pelanggan -->
+            <div>
+                <select class="modern-input custom-select text-gray-500">
+                    <option value="" disabled selected>Pilih nomor pelanggan</option>
+                    <option value="1">123456789 - John Doe</option>
+                </select>
+            </div>
+
+            <!-- Pilih jenis pengaduan -->
+            <div>
+                <select class="modern-input custom-select text-gray-500">
+                    <option value="" disabled selected>Pilih jenis pengaduan</option>
+                    <option value="air_mati">Air Mati / Tidak Mengalir</option>
+                    <option value="pipa_bocor">Pipa Bocor</option>
+                    <option value="air_keruh">Air Keruh</option>
+                </select>
+            </div>
+
+            <!-- Nama -->
+            <div>
+                <input type="text" placeholder="Nama" class="modern-input" maxlength="30" oninput="updateCharCount('count-nama', this.value.length, 30)">
+                <div class="text-right mt-1.5"><span id="count-nama" class="text-[10px] text-gray-500 font-semibold">0/30</span></div>
+            </div>
+
+            <!-- Lokasi Anda -->
+            <div>
+                <h4 class="text-[#47c4f4] font-extrabold text-[12px] mb-2 ml-1">Lokasi anda :</h4>
+                <div class="w-full h-48 bg-[#e2e8f0] rounded-2xl border-2 border-white shadow-inner relative overflow-hidden flex items-center justify-center cursor-pointer group">
+                    <!-- Fake Map Pattern -->
+                    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 10px 10px;"></div>
+                    
+                    <div class="text-center relative z-10 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-location-dot text-red-500 text-4xl drop-shadow-md mb-2"></i>
+                    </div>
+                    
+                    <div class="absolute bottom-2 left-2 bg-white/80 backdrop-blur text-[9px] font-bold px-2 py-1 rounded text-gray-600">
+                        <i class="fa-brands fa-google text-blue-500"></i> Google
+                    </div>
+                </div>
+                <p class="text-[9px] text-gray-500 mt-2 ml-1">*) Ketuk pada peta untuk mengubah lokasi</p>
+            </div>
+
+            <!-- Alamat -->
+            <div>
+                <textarea placeholder="Alamat" class="modern-input h-24 resize-none" maxlength="100" oninput="updateCharCount('count-alamat', this.value.length, 100)"></textarea>
+                <div class="text-right mt-1.5"><span id="count-alamat" class="text-[10px] text-gray-500 font-semibold">0/100</span></div>
+            </div>
+
+            <!-- No Telp -->
+            <div>
+                <input type="tel" placeholder="No.Telp" class="modern-input" maxlength="15" oninput="updateCharCount('count-telp', this.value.length, 15)">
+                <div class="text-right mt-1.5"><span id="count-telp" class="text-[10px] text-gray-500 font-semibold">0/15</span></div>
+            </div>
+
+            <!-- Detail Keluhan -->
+            <div>
+                <textarea placeholder="Detail keluhan" class="modern-input h-32 resize-none" maxlength="250" oninput="updateCharCount('count-detail', this.value.length, 250)"></textarea>
+                <div class="text-right mt-1.5"><span id="count-detail" class="text-[10px] text-gray-500 font-semibold">0/250</span></div>
+            </div>
+
+            <!-- Foto Keluhan -->
+            <div class="mb-4">
+                <div class="relative">
+                    <span class="absolute -top-2 left-3 bg-[#f8fafc] px-1 text-[10px] font-bold text-[#2a81d4]">Foto keluhan (opsional)</span>
+                    <div class="w-full h-40 bg-[#e2e8f0]/60 rounded-xl border border-[#cbd5e1] border-dashed flex flex-col items-center justify-center cursor-pointer hover:bg-blue-50 transition text-gray-400 hover:text-[#2a81d4]">
+                        <div class="w-10 h-10 rounded-lg bg-gray-200/50 flex items-center justify-center mb-2">
+                            <i class="fa-solid fa-camera text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="w-full bg-[#2a81d4] hover:bg-[#1f6db8] text-white text-[14px] font-extrabold py-3.5 rounded-2xl shadow-md transition-all mt-4 mb-24">
+                Kirim Keluhan
+            </button>
+        </div>
+
+        <!-- FORM MONITORING -->
+        <div id="content-monitoring" class="hidden flex-col items-center gap-4 animate-fade-in w-full h-full pb-20">
+            <select class="modern-input custom-select text-gray-500 w-full mb-10">
+                <option value="" disabled selected>Pilih nomor pelanggan</option>
+                <option value="1">123456789 - John Doe</option>
+            </select>
+            
+            <div class="flex-1 flex flex-col items-center justify-center pt-10">
+                <div class="w-24 h-24 bg-blue-50 text-[#47c4f4] rounded-full flex items-center justify-center text-4xl mb-6 shadow-sm border border-blue-100">
+                    <!-- Menggunakan icon sebagai ganti maskot -->
+                    <i class="fa-solid fa-droplet text-blue-400"></i>
+                </div>
+                <div class="bg-[#fef3c7] text-[#92400e] text-[11px] font-extrabold px-6 py-2.5 rounded-xl shadow-sm">
+                    Pilih nomor pelanggan anda
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="window.location.href='mobile_ui.html'"><i class="fa-solid fa-house"></i><span class="text-[9px] font-bold">Home</span></div>
+        <div class="nav-item" onclick="window.location.href='pasang_baru.html'"><i class="fa-solid fa-house-medical"></i><span class="text-[9px] font-bold">Pasang Baru</span></div>
+        
+        <!-- Laporan FAB -->
+        <div class="nav-fab" onclick="window.location.href='laporan.html'">
+            <i class="fa-solid fa-bullhorn"></i>
+        </div>
+
+        <div class="nav-item active" onclick="window.location.href='pengaduan.html'"><i class="fa-solid fa-comments"></i><span class="text-[9px] font-bold">Pengaduan</span></div>
+        <div class="nav-item" onclick="window.location.href='akun_saya.html'"><i class="fa-regular fa-user"></i><span class="text-[9px] font-bold">Profil</span></div>
+    </div>
+</div>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.3s ease forwards; }
+</style>
+
+<script>
+    function updateCharCount(id, current, max) {
+        document.getElementById(id).innerText = current + '/' + max;
+    }
+
+    function switchTab(tabName) {
+        const tabBaru = document.getElementById('tab-baru');
+        const tabMonitoring = document.getElementById('tab-monitoring');
+        const contentBaru = document.getElementById('content-baru');
+        const contentMonitoring = document.getElementById('content-monitoring');
+        const bottomButton = document.getElementById('bottom-button');
+
+        if (tabName === 'baru') {
+            // Update buttons styling
+            tabBaru.className = "flex-1 py-2.5 text-[11px] font-extrabold rounded-lg bg-white text-[#47c4f4] shadow-sm transition-all";
+            tabMonitoring.className = "flex-1 py-2.5 text-[11px] font-bold text-gray-500 rounded-lg hover:text-gray-700 transition-all";
+            
+            // Show/hide content
+            contentBaru.classList.remove('hidden');
+            contentBaru.classList.add('flex');
+            
+            contentMonitoring.classList.remove('flex');
+            contentMonitoring.classList.add('hidden');
+        } else {
+            // Update buttons styling
+            tabMonitoring.className = "flex-1 py-2.5 text-[11px] font-extrabold rounded-lg bg-white text-[#47c4f4] shadow-sm transition-all";
+            tabBaru.className = "flex-1 py-2.5 text-[11px] font-bold text-gray-500 rounded-lg hover:text-gray-700 transition-all";
+            
+            // Show/hide content
+            contentMonitoring.classList.remove('hidden');
+            contentMonitoring.classList.add('flex');
+            
+            contentBaru.classList.remove('flex');
+            contentBaru.classList.add('hidden');
+        }
+    }
+</script>
+</body>
+</html>

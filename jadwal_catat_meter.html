@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Catat Meter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
+        .mobile-container { max-width: 480px; min-height: 100vh; margin: 0 auto; background-color: #f8fafc; position: relative; box-shadow: 0 0 40px rgba(0, 0, 0, 0.05); overflow: hidden; display: flex; flex-direction: column; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .modern-card { background: #ffffff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); border: 1px solid rgba(0, 0, 0, 0.02); }
+    </style>
+</head>
+<body>
+<div class="mobile-container">
+    <!-- Modern Header -->
+    <div class="glass-header sticky top-0 z-50 px-6 py-4 flex items-center gap-4">
+        <a href="mobile_ui.html" class="w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full flex items-center justify-center text-gray-700 transition shadow-sm border border-gray-100">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <h1 class="text-[17px] font-extrabold text-gray-800 tracking-tight">Jadwal Catat Meter</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 px-5 pt-4 pb-8 flex flex-col relative z-10 gap-5">
+        
+        <!-- Select Card -->
+        <div class="modern-card p-4">
+            <label class="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-2">Pilih Pelanggan</label>
+            <div class="relative">
+                <select class="w-full appearance-none bg-gray-50 border-0 text-gray-800 text-[13px] font-bold px-4 py-3.5 rounded-xl outline-none focus:ring-2 focus:ring-[#2a81d4]/30 transition shadow-inner">
+                    <option>Nomor Pelanggan (ID: 1234 5678)</option>
+                </select>
+                <i class="fa-solid fa-chevron-down text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-[11px]"></i>
+            </div>
+        </div>
+
+        <!-- Center empty state -->
+        <div class="flex-1 flex flex-col items-center justify-center mt-10">
+            <!-- Mascot placeholder (using icon) -->
+            <div class="mb-5 text-[#2a81d4]">
+                <div class="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center shadow-inner">
+                    <i class="fa-solid fa-clipboard-user text-5xl opacity-80"></i>
+                </div>
+            </div>
+            <div class="bg-[#fef3c7] text-[#92400e] text-[11px] font-extrabold px-4 py-2.5 rounded-xl border border-[#fde68a] shadow-sm">
+                Silahkan pilih nomor pelanggan
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

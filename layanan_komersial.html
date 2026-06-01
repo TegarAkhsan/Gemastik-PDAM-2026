@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Komersial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
+        .mobile-container { max-width: 480px; min-height: 100vh; margin: 0 auto; background-color: #f8fafc; position: relative; box-shadow: 0 0 40px rgba(0, 0, 0, 0.05); overflow: hidden; display: flex; flex-direction: column; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .modern-card { background: #ffffff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); border: 1px solid rgba(0, 0, 0, 0.02); cursor: pointer; transition: all 0.2s; }
+        .modern-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06); }
+    </style>
+</head>
+<body>
+<div class="mobile-container">
+    <!-- Modern Header -->
+    <div class="glass-header sticky top-0 z-50 px-6 py-4 flex items-center gap-4">
+        <a href="mobile_ui.html" class="w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full flex items-center justify-center text-gray-700 transition shadow-sm border border-gray-100">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <h1 class="text-[17px] font-extrabold text-gray-800 tracking-tight">Layanan Komersial</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 px-5 pt-6 pb-8 flex flex-col gap-4 overflow-y-auto hide-scrollbar">
+        
+        <div class="grid grid-cols-2 gap-4 mb-2">
+            <!-- Card 1 -->
+            <div class="modern-card p-6 flex flex-col items-center justify-center text-center gap-4">
+                <!-- Illustration (Truck) -->
+                <div class="w-20 h-14 relative flex items-end justify-center">
+                    <i class="fa-solid fa-truck text-[#2a81d4] text-4xl"></i>
+                    <i class="fa-solid fa-droplet text-[#47c4f4] text-xl absolute top-0 right-2"></i>
+                </div>
+                <span class="text-[12px] font-extrabold text-gray-700 leading-tight">Tangki Air</span>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="modern-card p-6 flex flex-col items-center justify-center text-center gap-4">
+                <!-- Illustration (Valve/Pipe) -->
+                <div class="w-20 h-14 relative flex items-center justify-center">
+                    <i class="fa-solid fa-pipe-valve text-gray-400 text-4xl"></i>
+                    <i class="fa-solid fa-gear text-red-500 text-xl absolute top-1 left-8"></i>
+                </div>
+                <span class="text-[12px] font-extrabold text-gray-700 leading-tight">Peralatan Air</span>
+            </div>
+        </div>
+
+        <!-- Card 3 (Full width) -->
+        <div class="modern-card p-6 flex flex-col items-center justify-center text-center gap-4">
+            <!-- Illustration (Water box/money) -->
+            <div class="w-24 h-24 bg-[#2a81d4] rounded-2xl flex items-center justify-center relative overflow-hidden shadow-inner">
+                <i class="fa-solid fa-water text-white text-5xl opacity-40"></i>
+                <div class="absolute bottom-2 right-2 bg-[#84cc16] text-white text-[10px] font-black w-7 h-7 rounded-full flex items-center justify-center border-2 border-white">
+                    Rp
+                </div>
+            </div>
+            <span class="text-[13px] font-extrabold text-gray-700">Pembelian Air dengan Tangki Sendiri</span>
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>

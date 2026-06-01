@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifikasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
+        .mobile-container { max-width: 480px; min-height: 100vh; margin: 0 auto; background-color: #f8fafc; position: relative; box-shadow: 0 0 40px rgba(0, 0, 0, 0.05); overflow: hidden; display: flex; flex-direction: column; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .modern-card { background: #ffffff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); border: 1px solid rgba(0, 0, 0, 0.02); }
+    </style>
+</head>
+<body>
+<div class="mobile-container">
+    <!-- Modern Header -->
+    <div class="glass-header sticky top-0 z-50 px-6 py-4 flex items-center gap-4">
+        <a href="mobile_ui.html" class="w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full flex items-center justify-center text-gray-700 transition shadow-sm border border-gray-100">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <h1 class="text-[17px] font-extrabold text-gray-800 tracking-tight">Notifikasi</h1>
+        
+        <button class="ml-auto text-[#2a81d4] text-[11px] font-bold bg-blue-50 px-3 py-1.5 rounded-full hover:bg-blue-100 transition">Tandai sudah dibaca</button>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 px-5 pt-4 pb-10 flex flex-col gap-3 overflow-y-auto hide-scrollbar">
+        
+        <!-- Notif 1 (Unread) -->
+        <div class="modern-card p-4 flex gap-4 items-start relative overflow-hidden bg-blue-50/30 border-[#2a81d4]/20">
+            <div class="absolute top-0 left-0 w-1 h-full bg-[#2a81d4]"></div>
+            <div class="w-10 h-10 bg-[#e6f4ff] text-[#2a81d4] rounded-full flex items-center justify-center text-lg flex-shrink-0 mt-1">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-start mb-1">
+                    <h3 class="text-[13px] font-extrabold text-gray-800 leading-tight">Tagihan Air Bulan Ini</h3>
+                    <span class="text-[9px] text-[#2a81d4] font-bold">Baru saja</span>
+                </div>
+                <p class="text-[11px] text-gray-600 leading-relaxed">Tagihan air untuk periode Juni 2026 sudah terbit. Segera lakukan pembayaran sebelum tanggal 20 untuk menghindari denda.</p>
+            </div>
+        </div>
+
+        <!-- Notif 2 -->
+        <div class="modern-card p-4 flex gap-4 items-start relative overflow-hidden">
+            <div class="w-10 h-10 bg-orange-50 text-orange-500 rounded-full flex items-center justify-center text-lg flex-shrink-0 mt-1">
+                <i class="fa-solid fa-faucet-drip"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-start mb-1">
+                    <h3 class="text-[13px] font-extrabold text-gray-800 leading-tight">Info Gangguan Area Tengah</h3>
+                    <span class="text-[9px] text-gray-400 font-bold">Kemarin</span>
+                </div>
+                <p class="text-[11px] text-gray-500 leading-relaxed">Akan dilakukan pemeliharaan pipa di Jl. Basuki Rahmat pada 20 Juli pukul 22.00 - 04.00 WIB. Mohon maaf atas ketidaknyamanannya.</p>
+            </div>
+        </div>
+
+        <!-- Notif 3 -->
+        <div class="modern-card p-4 flex gap-4 items-start relative overflow-hidden">
+            <div class="w-10 h-10 bg-green-50 text-green-500 rounded-full flex items-center justify-center text-lg flex-shrink-0 mt-1">
+                <i class="fa-solid fa-check-circle"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-start mb-1">
+                    <h3 class="text-[13px] font-extrabold text-gray-800 leading-tight">Pembayaran Berhasil</h3>
+                    <span class="text-[9px] text-gray-400 font-bold">3 Hari lalu</span>
+                </div>
+                <p class="text-[11px] text-gray-500 leading-relaxed">Terima kasih, pembayaran tagihan air bulan Mei sebesar Rp. 85.000 telah kami terima.</p>
+            </div>
+        </div>
+
+        <!-- Notif 4 -->
+        <div class="modern-card p-4 flex gap-4 items-start relative overflow-hidden">
+            <div class="w-10 h-10 bg-[#e6f4ff] text-[#2a81d4] rounded-full flex items-center justify-center text-lg flex-shrink-0 mt-1">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div class="flex-1">
+                <div class="flex justify-between items-start mb-1">
+                    <h3 class="text-[13px] font-extrabold text-gray-800 leading-tight">Jadwal Catat Meter</h3>
+                    <span class="text-[9px] text-gray-400 font-bold">1 Minggu lalu</span>
+                </div>
+                <p class="text-[11px] text-gray-500 leading-relaxed">Periode catat meter mandiri akan segera dibuka besok. Siapkan foto meteran Anda yang jelas.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

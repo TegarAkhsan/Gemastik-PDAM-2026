@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catat Meter Mandiri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
+        .mobile-container { max-width: 480px; min-height: 100vh; margin: 0 auto; background-color: #f8fafc; position: relative; box-shadow: 0 0 40px rgba(0, 0, 0, 0.05); overflow: hidden; display: flex; flex-direction: column; }
+        
+        /* Utility hide scrollbar */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Glass Header */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .modern-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+    </style>
+</head>
+<body>
+<div class="mobile-container">
+    <!-- Modern Header (Removed Waves) -->
+    <div class="glass-header sticky top-0 z-50 px-6 py-4 flex items-center gap-4">
+        <a href="mobile_ui.html" class="w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full flex items-center justify-center text-gray-700 transition shadow-sm border border-gray-100">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <h1 class="text-[17px] font-extrabold text-gray-800 tracking-tight">Catat Meter Mandiri</h1>
+    </div>
+
+    <!-- Content (Scrollable) -->
+    <div class="flex-1 overflow-y-auto hide-scrollbar px-5 pt-4 pb-10 flex flex-col gap-5">
+        
+        <!-- Toggle Tabs -->
+        <div class="bg-gray-100/80 p-1.5 rounded-[18px] flex items-center mx-auto w-[280px] border border-gray-200/50">
+            <button class="flex-1 bg-white text-[#2a81d4] text-[11px] font-bold py-2.5 rounded-2xl shadow-sm transition">Catat Meter</button>
+            <button class="flex-1 text-gray-500 hover:text-gray-700 text-[11px] font-semibold py-2.5 rounded-2xl transition">Riwayat</button>
+        </div>
+
+        <!-- Countdown Banner -->
+        <div class="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-100 rounded-2xl p-4 flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-3 text-orange-600">
+                <div class="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-hourglass-half animate-pulse"></i>
+                </div>
+                <div>
+                    <span class="block text-[9px] font-bold uppercase tracking-widest text-orange-500 mb-0.5">Sisa Waktu</span>
+                    <div class="text-sm font-extrabold text-orange-800 leading-none">3 Hari 14 Jam</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button Lihat Petunjuk -->
+        <button class="w-full bg-[#2a81d4] text-white text-[13px] font-extrabold py-3.5 rounded-2xl flex justify-center items-center gap-2 shadow-[0_8px_20px_rgba(42,129,212,0.25)] hover:bg-[#1f6db8] hover:shadow-[0_4px_10px_rgba(42,129,212,0.2)] transition-all">
+            <i class="fa-solid fa-circle-info"></i>
+            Lihat Petunjuk
+        </button>
+
+        <!-- Select Card -->
+        <div class="modern-card p-4">
+            <label class="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-2">Pilih Pelanggan</label>
+            <div class="relative">
+                <select class="w-full appearance-none bg-gray-50 border-0 text-gray-800 text-[13px] font-bold px-4 py-3.5 rounded-xl outline-none focus:ring-2 focus:ring-[#2a81d4]/30 transition shadow-inner">
+                    <option>Nomor Pelanggan (ID: 1234 5678)</option>
+                </select>
+                <i class="fa-solid fa-chevron-down text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-[11px]"></i>
+            </div>
+        </div>
+
+        <!-- Lokasi Anda -->
+        <div class="modern-card p-4">
+            <label class="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-3">Lokasi Anda</label>
+            
+            <!-- GPS Alert -->
+            <div class="bg-red-50 border border-red-100 rounded-xl p-3 mb-4 flex items-start gap-3 shadow-sm">
+                <div class="w-7 h-7 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 text-red-500 mt-0.5">
+                    <i class="fa-solid fa-location-dot text-[11px]"></i>
+                </div>
+                <p class="text-[11px] leading-snug font-medium text-red-700">Lokasi Anda tidak terbaca. Silakan aktifkan GPS/Lokasi di pengaturan HP Anda dan <a href="#" class="font-extrabold underline text-red-800 hover:text-red-900 transition">Deteksi Ulang</a>.</p>
+            </div>
+
+            <!-- Map Placeholder Container -->
+            <div class="relative w-full h-[180px] bg-gray-100 rounded-xl overflow-hidden border border-gray-200/50">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    loading="lazy" 
+                    allowfullscreen 
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=112.730,-7.260,112.740,-7.250&amp;layer=mapnik&amp;marker=-7.255,112.735">
+                </iframe>
+                
+                <div class="absolute right-3 top-3 bg-white/90 backdrop-blur w-9 h-9 rounded-full shadow-md border border-gray-100 flex items-center justify-center text-[#2a81d4] cursor-pointer hover:bg-blue-50 transition">
+                    <i class="fa-solid fa-crosshairs"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foto Meter -->
+        <div class="modern-card p-4">
+            <label class="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-1.5">Foto Meteran</label>
+            <p class="text-[10px] text-gray-500 mb-4 leading-relaxed">Pastikan angka merah dan hitam pada meteran terlihat jelas dan foto diambil di tempat terang.</p>
+
+            <div class="flex gap-3">
+                <!-- Option 1: Camera -->
+                <div class="flex-1 bg-[#f8fbff] border-2 border-dashed border-[#b3d4f5] rounded-2xl flex flex-col items-center justify-center py-6 cursor-pointer hover:bg-[#eaf4ff] hover:border-[#2a81d4] transition-all group">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#2a81d4] shadow-sm mb-3 group-hover:scale-110 group-hover:shadow-md transition-all">
+                        <i class="fa-solid fa-camera text-lg"></i>
+                    </div>
+                    <span class="text-[11px] font-extrabold text-[#2a81d4]">Ambil Foto</span>
+                </div>
+                
+                <!-- Option 2: Gallery -->
+                <div class="flex-1 bg-gray-50 border border-gray-200/60 rounded-2xl flex flex-col items-center justify-center py-6 cursor-pointer hover:bg-gray-100 transition-all group">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-500 shadow-sm mb-3 group-hover:scale-110 group-hover:shadow-md transition-all">
+                        <i class="fa-regular fa-image text-lg"></i>
+                    </div>
+                    <span class="text-[11px] font-extrabold text-gray-600">Buka Galeri</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

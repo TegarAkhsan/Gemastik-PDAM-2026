@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akun Saya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
+        .mobile-container { max-width: 480px; min-height: 100vh; margin: 0 auto; background-color: #f8fafc; position: relative; box-shadow: 0 0 40px rgba(0, 0, 0, 0.05); overflow: hidden; display: flex; flex-direction: column; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .modern-card { background: #ffffff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); border: 1px solid rgba(0, 0, 0, 0.02); }
+        
+        /* Navigation FAB */
+        .nav-fab {
+            background: linear-gradient(135deg, #2a81d4 0%, #1f6db8 100%);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 10px 25px rgba(42, 129, 212, 0.4);
+            margin-top: -45px;
+            border: 6px solid #fafbfc;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-fab:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(42, 129, 212, 0.5);
+        }
+        /* Bottom Nav */
+        .bottom-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 440px;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 25px;
+            z-index: 50;
+        }
+        .nav-item {
+            color: #b0bec5;
+            font-size: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .nav-item.active {
+            color: white;
+            background: linear-gradient(135deg, #2a81d4, #4798e1);
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -10px;
+            font-size: 18px;
+            box-shadow: 0 10px 20px rgba(42, 129, 212, 0.3);
+            gap: 2px;
+        }
+        .nav-item.active span { display: none; }
+    </style>
+</head>
+<body>
+<div class="mobile-container">
+    <!-- Modern Header -->
+    <div class="glass-header sticky top-0 z-50 px-6 py-4 flex items-center gap-4">
+        <a href="mobile_ui.html" class="w-10 h-10 bg-gray-50 hover:bg-gray-100 rounded-full flex items-center justify-center text-gray-700 transition shadow-sm border border-gray-100">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <h1 class="text-[17px] font-extrabold text-gray-800 tracking-tight">Akun Saya</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 px-5 pt-4 pb-28 flex flex-col gap-5 overflow-y-auto hide-scrollbar">
+        
+        <!-- Profil Card -->
+        <div class="modern-card p-5">
+            <div class="flex items-start justify-between mb-4 border-b border-gray-100 pb-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#2a81d4] border border-blue-100 shadow-sm">
+                        <i class="fa-solid fa-user text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-0.5">Nama</p>
+                        <h2 class="text-[14px] font-extrabold text-gray-800">-</h2>
+                    </div>
+                </div>
+                <button class="w-8 h-8 bg-gray-50 hover:bg-gray-100 rounded-full flex items-center justify-center text-[#2a81d4] transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-pen-to-square text-[10px]"></i>
+                </button>
+            </div>
+
+            <div class="flex items-start justify-between mb-5">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#2a81d4] border border-blue-100 shadow-sm">
+                        <i class="fa-solid fa-phone text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-0.5">No. Handphone</p>
+                        <h2 class="text-[14px] font-extrabold text-gray-800">-</h2>
+                    </div>
+                </div>
+                <button class="w-8 h-8 bg-gray-50 hover:bg-gray-100 rounded-full flex items-center justify-center text-[#2a81d4] transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-pen-to-square text-[10px]"></i>
+                </button>
+            </div>
+            
+            <div class="bg-red-50 rounded-xl p-3.5 mb-5 border border-red-100 flex items-start gap-3">
+                <i class="fa-solid fa-circle-exclamation text-red-500 mt-0.5 text-sm"></i>
+                <p class="text-[10.5px] font-bold text-red-600 leading-relaxed">Anda belum menghubungkan email Google anda.<br>Hubungkan email Google untuk opsi login lebih mudah.</p>
+            </div>
+
+            <button class="w-full bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 text-[13px] font-extrabold py-3.5 rounded-2xl shadow-sm transition-all flex justify-center items-center gap-2.5">
+                <i class="fa-brands fa-google text-red-500 text-base"></i>
+                Hubungkan Akun Google
+            </button>
+        </div>
+
+        <!-- Nomor Pelanggan Terdaftar -->
+        <div>
+            <h3 class="text-[12px] font-extrabold text-[#2a81d4] mb-3 ml-1">Nomor pelanggan terdaftar :</h3>
+            <div class="modern-card p-6 flex flex-col items-center justify-center border-2 border-dashed border-[#a3cc39] bg-[#fdfef9] shadow-sm">
+                <div class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-circle-exclamation text-xl"></i>
+                </div>
+                <p class="text-[11px] font-bold text-red-500 mb-5 text-center">Anda belum menambahkan nomor pelanggan</p>
+                <button class="w-full max-w-[280px] bg-[#a3cc39] hover:bg-[#8eb82e] text-white text-[12px] font-extrabold py-3.5 rounded-2xl shadow-md transition-all flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-plus"></i>
+                    Tambahkan Nomor Pelanggan
+                </button>
+            </div>
+        </div>
+
+        <p class="text-[9.5px] text-gray-500 leading-relaxed mx-1 font-medium">
+            *) Untuk menghapus nomor pelanggan yang nonaktif, silakan menghubungi Call Center kami via Telp / Whatsapp
+        </p>
+
+        <!-- Tentang Kami Link -->
+        <div class="modern-card p-4 mt-2 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition" onclick="window.location.href='tentang_kami.html'">
+            <div class="flex items-center gap-3 text-gray-700">
+                <div class="w-10 h-10 bg-blue-50 text-[#2a81d4] rounded-full flex items-center justify-center border border-blue-100 shadow-sm">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <span class="font-extrabold text-[13px]">Tentang Kami</span>
+            </div>
+            <div class="w-6 h-6 bg-gray-50 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-chevron-right text-gray-400 text-[10px]"></i>
+            </div>
+        </div>
+
+        <!-- Logout Button -->
+        <button class="w-full bg-[#fff1f2] border border-[#ffe4e6] hover:bg-[#ffe4e6] text-red-500 text-[13px] font-extrabold py-4 rounded-2xl transition-all mt-4 mb-4 flex justify-center items-center gap-2 shadow-sm">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Keluar dari Akun Anda
+        </button>
+
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="window.location.href='mobile_ui.html'"><i class="fa-solid fa-house"></i><span class="text-[9px] font-bold">Home</span></div>
+        <div class="nav-item" onclick="window.location.href='pasang_baru.html'"><i class="fa-solid fa-house-medical"></i><span class="text-[9px] font-bold">Pasang Baru</span></div>
+        
+        <!-- Laporan FAB -->
+        <div class="nav-fab" onclick="window.location.href='laporan.html'">
+            <i class="fa-solid fa-bullhorn"></i>
+        </div>
+
+        <div class="nav-item" onclick="window.location.href='pengaduan.html'"><i class="fa-solid fa-comments"></i><span class="text-[9px] font-bold">Pengaduan</span></div>
+        <div class="nav-item active" onclick="window.location.href='akun_saya.html'"><i class="fa-regular fa-user"></i><span class="text-[9px] font-bold">Profil</span></div>
+    </div>
+</div>
+</body>
+</html>

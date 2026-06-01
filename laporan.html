@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapor Khusus (WBC)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
+        .mobile-container { max-width: 480px; min-height: 100vh; margin: 0 auto; background-color: #f8fafc; position: relative; box-shadow: 0 0 40px rgba(0, 0, 0, 0.05); overflow: hidden; display: flex; flex-direction: column; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .modern-input { appearance: none; background: #ffffff; border: 1px solid #e2e8f0; color: #334155; font-size: 13px; font-weight: 600; padding: 14px 16px; border-radius: 12px; outline: none; width: 100%; transition: all 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .modern-input:focus { border-color: #47c4f4; box-shadow: 0 0 0 3px rgba(71, 196, 244, 0.15); }
+        
+        /* Navigation FAB */
+        .nav-fab {
+            background: linear-gradient(135deg, #2a81d4 0%, #1f6db8 100%);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 10px 25px rgba(42, 129, 212, 0.4);
+            margin-top: -45px;
+            border: 6px solid #fafbfc;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-fab.active {
+            box-shadow: 0 0 0 4px #e0f2fe, 0 10px 25px rgba(42, 129, 212, 0.6);
+            transform: scale(1.05);
+        }
+        .nav-fab:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(42, 129, 212, 0.5);
+        }
+        /* Bottom Nav */
+        .bottom-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 440px;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 25px;
+            z-index: 50;
+        }
+        .nav-item {
+            color: #b0bec5;
+            font-size: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .nav-item.active {
+            color: white;
+            background: linear-gradient(135deg, #2a81d4, #4798e1);
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -10px;
+            font-size: 18px;
+            box-shadow: 0 10px 20px rgba(42, 129, 212, 0.3);
+            gap: 2px;
+        }
+        .nav-item.active span { display: none; }
+    </style>
+</head>
+<body>
+<div class="mobile-container pb-28">
+    <!-- Modern Header -->
+    <div class="glass-header sticky top-0 z-40 px-6 py-4 flex items-center gap-4">
+        <h1 class="text-[17px] font-extrabold text-gray-800 tracking-tight">Lapor Khusus (WBC)</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 px-5 pt-6 flex flex-col gap-5 overflow-y-auto hide-scrollbar">
+        
+        <div class="bg-blue-50/50 border border-blue-100 p-4 rounded-2xl mb-2 flex gap-3">
+            <div class="text-blue-500 mt-1"><i class="fa-solid fa-circle-info"></i></div>
+            <p class="text-[11px] text-gray-600 leading-relaxed font-medium">Layanan Lapor Khusus / Whistleblowing Center (WBC) adalah fasilitas bagi Anda untuk melaporkan tindakan pelanggaran yang terjadi di lingkungan kami. Laporan Anda dijamin kerahasiaannya.</p>
+        </div>
+
+        <div>
+            <input type="text" placeholder="Judul Laporan" class="modern-input">
+        </div>
+        <div>
+            <textarea placeholder="Deskripsi Pelanggaran / Kronologi" class="modern-input h-32 resize-none"></textarea>
+        </div>
+        
+        <div class="mb-2">
+            <div class="relative">
+                <span class="absolute -top-2 left-3 bg-[#f8fafc] px-1 text-[10px] font-bold text-[#2a81d4]">Bukti Lampiran (Opsional)</span>
+                <div class="w-full h-32 bg-[#e2e8f0]/60 rounded-xl border border-[#cbd5e1] border-dashed flex flex-col items-center justify-center cursor-pointer hover:bg-blue-50 transition text-gray-400 hover:text-[#2a81d4]">
+                    <div class="w-10 h-10 rounded-lg bg-gray-200/50 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-paperclip text-lg"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="w-full bg-[#2a81d4] hover:bg-[#1f6db8] text-white text-[14px] font-extrabold py-3.5 rounded-2xl shadow-md transition-all mt-2">
+            Kirim Laporan Rahasia
+        </button>
+        
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="window.location.href='mobile_ui.html'"><i class="fa-solid fa-house"></i><span class="text-[9px] font-bold">Home</span></div>
+        <div class="nav-item" onclick="window.location.href='pasang_baru.html'"><i class="fa-solid fa-house-medical"></i><span class="text-[9px] font-bold">Pasang Baru</span></div>
+        
+        <!-- Laporan FAB (Active) -->
+        <div class="nav-fab active" onclick="window.location.href='laporan.html'">
+            <i class="fa-solid fa-bullhorn"></i>
+        </div>
+
+        <div class="nav-item" onclick="window.location.href='pengaduan.html'"><i class="fa-solid fa-comments"></i><span class="text-[9px] font-bold">Pengaduan</span></div>
+        <div class="nav-item" onclick="window.location.href='akun_saya.html'"><i class="fa-regular fa-user"></i><span class="text-[9px] font-bold">Profil</span></div>
+    </div>
+</div>
+</body>
+</html>
