@@ -45,13 +45,15 @@
     <div class="flex-1 overflow-y-auto hide-scrollbar px-5 pt-4 pb-10 flex flex-col gap-5">
         
         <!-- Toggle Tabs -->
-        <div class="bg-gray-100/80 p-1.5 rounded-[18px] flex items-center mx-auto w-[280px] border border-gray-200/50">
-            <button class="flex-1 bg-white text-[#2a81d4] text-[11px] font-bold py-2.5 rounded-2xl shadow-sm transition">Catat Meter</button>
-            <button class="flex-1 text-gray-500 hover:text-gray-700 text-[11px] font-semibold py-2.5 rounded-2xl transition">Riwayat</button>
+        <div class="bg-gray-100/80 p-1.5 rounded-[18px] flex items-center mx-auto w-[280px] border border-gray-200/50 relative z-20">
+            <button type="button" id="btn-catat" onclick="switchTab('catat')" class="flex-1 bg-white text-[#2a81d4] text-[11px] font-bold py-2.5 rounded-2xl shadow-sm transition cursor-pointer">Catat Meter</button>
+            <button type="button" id="btn-riwayat" onclick="switchTab('riwayat')" class="flex-1 text-gray-500 hover:text-gray-700 text-[11px] font-semibold py-2.5 rounded-2xl transition cursor-pointer">Riwayat</button>
         </div>
 
-        <!-- Countdown Banner -->
-        <div class="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-100 rounded-2xl p-4 flex items-center justify-between shadow-sm">
+        <!-- Tab Content: Catat Meter -->
+        <div id="tab-catat" class="flex flex-col gap-5 animate-fade-in">
+            <!-- Countdown Banner -->
+            <div class="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-100 rounded-2xl p-4 flex items-center justify-between shadow-sm">
             <div class="flex items-center gap-3 text-orange-600">
                 <div class="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center">
                     <i class="fa-solid fa-hourglass-half animate-pulse"></i>
@@ -68,6 +70,35 @@
             <i class="fa-solid fa-circle-info"></i>
             Lihat Petunjuk
         </button>
+
+        <!-- Wizard Stepper -->
+        <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col mt-2">
+            <!-- Progress Circles & Line -->
+            <div class="relative flex justify-between items-center px-4 mb-2">
+                <!-- Background Line -->
+                <div class="absolute left-8 right-8 top-1/2 transform -translate-y-1/2 h-1 bg-gray-200 z-0"></div>
+                <!-- Active Line -->
+                <div class="absolute left-8 top-1/2 transform -translate-y-1/2 h-1 bg-[#2a81d4] z-0" style="width: 33%;"></div>
+                
+                <!-- Steps -->
+                <div class="relative z-10 w-6 h-6 rounded-full bg-[#2a81d4] text-white flex items-center justify-center text-[10px] font-bold border-2 border-white shadow-sm ring-2 ring-[#2a81d4]/20">1</div>
+                <div class="relative z-10 w-6 h-6 rounded-full bg-[#2a81d4] text-white flex items-center justify-center text-[10px] font-bold border-2 border-white shadow-sm ring-2 ring-[#2a81d4]/20">2</div>
+                <div class="relative z-10 w-6 h-6 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center text-[10px] font-bold border-2 border-white">3</div>
+                <div class="relative z-10 w-6 h-6 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center text-[10px] font-bold border-2 border-white">4</div>
+            </div>
+            
+            <!-- Labels -->
+            <div class="flex justify-between items-start text-[8px] font-extrabold text-gray-400 uppercase tracking-widest px-1 mb-2">
+                <span class="text-[#2a81d4] w-10 text-center -ml-2">Pelanggan</span>
+                <span class="text-[#2a81d4] w-10 text-center">Lokasi</span>
+                <span class="w-10 text-center">Foto</span>
+                <span class="w-10 text-center -mr-2">Selesai</span>
+            </div>
+            
+            <div class="text-center bg-blue-50/50 py-2 rounded-xl border border-blue-50 mt-1">
+                <p class="text-[11px] font-extrabold text-[#2a81d4]">Langkah 2 dari 4: Verifikasi Lokasi Anda</p>
+            </div>
+        </div>
 
         <!-- Select Card -->
         <div class="modern-card p-4">
@@ -133,7 +164,96 @@
             </div>
         </div>
 
+        </div> <!-- End Tab Catat Meter -->
+
+        <!-- Tab Content: Riwayat -->
+        <div id="tab-riwayat" class="flex flex-col gap-4 animate-fade-in hidden">
+            <h3 class="font-extrabold text-gray-800 text-[14px] px-1 mt-1">Riwayat Pencatatan Anda</h3>
+            
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col gap-3 hover:shadow-md transition">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="bg-green-100 text-green-600 text-[9px] font-extrabold px-2 py-1 rounded-md uppercase tracking-wider mb-2 inline-block">Terverifikasi</span>
+                        <h4 class="text-[13px] font-extrabold text-gray-800">Periode Juni 2026</h4>
+                        <p class="text-[11px] text-gray-500 font-medium mt-0.5">ID Pelanggan: 1234 5678</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[14px] font-black text-[#2a81d4]">25 m³</span>
+                        <p class="text-[9px] font-bold text-gray-400 mt-0.5">Angka Meter: 1025</p>
+                    </div>
+                </div>
+                <hr class="border-gray-50" />
+                <div class="flex justify-between items-center text-[10px] text-gray-500">
+                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar text-gray-400"></i> 20 Jun 2026, 10:30 WIB</span>
+                    <span class="flex items-center gap-1 text-[#2a81d4] font-bold cursor-pointer hover:underline">Lihat Foto <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col gap-3 hover:shadow-md transition">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="bg-green-100 text-green-600 text-[9px] font-extrabold px-2 py-1 rounded-md uppercase tracking-wider mb-2 inline-block">Terverifikasi</span>
+                        <h4 class="text-[13px] font-extrabold text-gray-800">Periode Mei 2026</h4>
+                        <p class="text-[11px] text-gray-500 font-medium mt-0.5">ID Pelanggan: 1234 5678</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[14px] font-black text-[#2a81d4]">22 m³</span>
+                        <p class="text-[9px] font-bold text-gray-400 mt-0.5">Angka Meter: 1000</p>
+                    </div>
+                </div>
+                <hr class="border-gray-50" />
+                <div class="flex justify-between items-center text-[10px] text-gray-500">
+                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar text-gray-400"></i> 19 Mei 2026, 09:15 WIB</span>
+                    <span class="flex items-center gap-1 text-[#2a81d4] font-bold cursor-pointer hover:underline">Lihat Foto <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col gap-3 hover:shadow-md transition">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="bg-green-100 text-green-600 text-[9px] font-extrabold px-2 py-1 rounded-md uppercase tracking-wider mb-2 inline-block">Terverifikasi</span>
+                        <h4 class="text-[13px] font-extrabold text-gray-800">Periode April 2026</h4>
+                        <p class="text-[11px] text-gray-500 font-medium mt-0.5">ID Pelanggan: 1234 5678</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[14px] font-black text-[#2a81d4]">20 m³</span>
+                        <p class="text-[9px] font-bold text-gray-400 mt-0.5">Angka Meter: 978</p>
+                    </div>
+                </div>
+                <hr class="border-gray-50" />
+                <div class="flex justify-between items-center text-[10px] text-gray-500">
+                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar text-gray-400"></i> 18 Apr 2026, 11:20 WIB</span>
+                    <span class="flex items-center gap-1 text-[#2a81d4] font-bold cursor-pointer hover:underline">Lihat Foto <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+            </div>
+            
+            <div class="text-center mt-2 mb-4">
+                <button class="text-[11px] font-bold text-gray-400 hover:text-[#2a81d4] transition">Tampilkan Lebih Banyak</button>
+            </div>
+        </div>
+
     </div>
 </div>
+
+<script>
+    function switchTab(tab) {
+        const btnCatat = document.getElementById('btn-catat');
+        const btnRiwayat = document.getElementById('btn-riwayat');
+        const tabCatat = document.getElementById('tab-catat');
+        const tabRiwayat = document.getElementById('tab-riwayat');
+
+        if (tab === 'catat') {
+            btnCatat.className = "flex-1 bg-white text-[#2a81d4] text-[11px] font-bold py-2.5 rounded-2xl shadow-sm transition cursor-pointer";
+            btnRiwayat.className = "flex-1 text-gray-500 hover:text-gray-700 text-[11px] font-semibold py-2.5 rounded-2xl transition cursor-pointer";
+            tabCatat.classList.remove('hidden');
+            tabRiwayat.classList.add('hidden');
+        } else {
+            btnRiwayat.className = "flex-1 bg-white text-[#2a81d4] text-[11px] font-bold py-2.5 rounded-2xl shadow-sm transition cursor-pointer";
+            btnCatat.className = "flex-1 text-gray-500 hover:text-gray-700 text-[11px] font-semibold py-2.5 rounded-2xl transition cursor-pointer";
+            tabRiwayat.classList.remove('hidden');
+            tabCatat.classList.add('hidden');
+        }
+    }
+</script>
 </body>
 </html>

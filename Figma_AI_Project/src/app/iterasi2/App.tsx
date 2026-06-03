@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Camera, Search, Bell, Droplet, FileText, CalendarCheck, Receipt, Layers, 
-  ChevronDown, Home, Megaphone, MessageSquare, User, Clock, Edit, FilePlus, 
+import {
+  Camera, Search, Bell, Droplet, FileText, Calendar, CalendarCheck, Receipt, Layers,
+  ChevronDown, Home as HomeIcon, Megaphone, MessageSquare, User, Clock, Edit, FilePlus,
   LineChart, PhoneCall, Smartphone, HelpCircle, Pointer, History, Activity,
-  Stethoscope, Info, Paperclip, MapPin, AlertCircle, Plus, ChevronRight, LogOut, 
+  Stethoscope, Info, Paperclip, MapPin, AlertCircle, Plus, ChevronRight, LogOut,
   Chrome, PenSquare, Phone, ClipboardCheck, ChevronLeft, ArrowRight, Image as ImageIcon,
   Truck, Settings, CircleDollarSign, Wrench, ClipboardList, Hourglass, Crosshair, BarChart3
 } from 'lucide-react';
@@ -43,7 +43,7 @@ function Home({ togglePopup, setActiveTab }: { togglePopup: (id: string) => void
       </div>
 
       <div className="flex-1 overflow-y-auto hide-scrollbar px-6 relative z-10">
-        
+
         <div className="hero-card p-5 mb-8 text-white relative">
           <div className="relative z-10">
             <div className="flex justify-between items-center mb-5">
@@ -56,23 +56,35 @@ function Home({ togglePopup, setActiveTab }: { togglePopup: (id: string) => void
                 <span className="font-extrabold text-[10px] uppercase tracking-wider">Aktif</span>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-3">
-              <div className="glass-panel p-3 flex flex-col justify-center cursor-pointer hover:bg-white/15 transition">
-                <p className="text-blue-50 text-[10px] font-semibold mb-1 flex items-center gap-1.5"><FileText className="w-3 h-3 opacity-80" /> Tagihan</p>
-                <h2 className="font-extrabold text-[15px] tracking-tight">Rp 25.000</h2>
+              <div className="glass-panel p-3 flex flex-col gap-1.5 justify-center cursor-pointer hover:bg-white/15 transition" onClick={() => setActiveTab('bayar_tagihan')}>
+                <p className="text-blue-50 text-[10px] font-semibold flex items-center gap-1.5 uppercase tracking-wider"><FileText className="w-3 h-3 opacity-80" /> Tagihan</p>
+                <h3 className="font-extrabold text-[17px] tracking-tight">Rp 25.000</h3>
               </div>
-              <div className="glass-panel p-3 flex flex-col justify-center cursor-pointer hover:bg-white/15 transition relative overflow-hidden">
-                <p className="text-blue-50 text-[10px] font-semibold mb-1 flex items-center gap-1.5"><MessageSquare className="w-3 h-3 opacity-80" /> Pengaduan</p>
-                <h2 className="font-extrabold text-[15px] tracking-tight text-[#ffebb3]">1 Diproses</h2>
-                <div className="absolute -right-3 -bottom-3 text-white/10 text-4xl"><MessageSquare className="w-12 h-12" /></div>
+              <div className="glass-panel p-3 flex flex-col gap-1.5 justify-center cursor-pointer hover:bg-white/15 transition" onClick={() => togglePopup('popup-catat-meter')}>
+                <p className="text-blue-50 text-[10px] font-semibold flex items-center gap-1.5 uppercase tracking-wider"><Camera className="w-3 h-3 opacity-80" /> Catat Meter</p>
+                <h3 className="font-extrabold text-[17px] text-[#ffd166] tracking-tight">3 Hari Lagi</h3>
+              </div>
+              <div className="glass-panel p-3 flex flex-col gap-1.5 col-span-2 cursor-pointer hover:bg-white/20 transition" onClick={() => setActiveTab('pengaduan')}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-blue-100">
+                    <MessageSquare className="w-3 h-3 opacity-80" />
+                    <span className="text-[10px] font-semibold uppercase tracking-wider">Pengaduan</span>
+                  </div>
+                  <span className="bg-white/20 text-white text-[9px] px-2 py-0.5 rounded-full font-bold">Sedang Diproses</span>
+                </div>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="w-2 h-2 bg-[#ffd166] rounded-full animate-pulse shadow-[0_0_0_3px_rgba(255,209,102,0.2)]"></span>
+                  <h3 className="font-bold text-sm">1 Laporan: Pipa Bocor</h3>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div 
-          className="mb-6 bg-gradient-to-r from-[#e6f4ff] to-blue-50 border border-blue-100 rounded-[16px] p-4 shadow-sm relative overflow-hidden cursor-pointer group" 
+        <div
+          className="mb-6 bg-gradient-to-r from-[#e6f4ff] to-blue-50 border border-blue-100 rounded-[16px] p-4 shadow-sm relative overflow-hidden cursor-pointer group"
           onClick={() => togglePopup('popup-catat-meter')}
         >
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-blue-100/50 to-transparent"></div>
@@ -95,7 +107,7 @@ function Home({ togglePopup, setActiveTab }: { togglePopup: (id: string) => void
               <span>Sisa Waktu: <span className="text-orange-600 font-extrabold">3 Hari 14 Jam</span></span>
             </div>
             <div className="w-full bg-blue-200/50 rounded-full h-1.5 overflow-hidden">
-              <div className="bg-gradient-to-r from-[#2a81d4] to-[#47c4f4] h-1.5 rounded-full" style={{width: '40%'}}></div>
+              <div className="bg-gradient-to-r from-[#2a81d4] to-[#47c4f4] h-1.5 rounded-full" style={{ width: '40%' }}></div>
             </div>
             <p className="text-[10px] text-gray-500 font-bold text-center mt-0.5">Hari ke-2 dari 5</p>
           </div>
@@ -105,39 +117,39 @@ function Home({ togglePopup, setActiveTab }: { togglePopup: (id: string) => void
           <h3 className="font-extrabold text-gray-800 text-base">Layanan Kami</h3>
           <a href="#" className="text-gray-400 text-[12px] font-bold hover:text-blue-600 transition">See all</a>
         </div>
-        
+
         <div className="grid grid-cols-4 gap-y-5 gap-x-2 mb-6 pt-2">
           <div className="menu-item" onClick={() => setActiveTab('bayar_tagihan')}>
             <div className="menu-icon-box"><Receipt className="w-6 h-6" /></div>
-            <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">Bayar<br/>Tagihan</span>
+            <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">Bayar<br />Tagihan</span>
           </div>
           <div className="menu-item" onClick={() => togglePopup('popup-catat-meter')}>
             <div className="menu-icon-box"><Camera className="w-6 h-6" /></div>
-            <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">Catat<br/>Meter</span>
+            <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">Catat<br />Meter</span>
           </div>
           <div className="menu-item" onClick={() => setActiveTab('info_gangguan')}>
             <div className="menu-icon-box"><Droplet className="w-6 h-6" /></div>
-            <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">Info<br/>Gangguan</span>
+            <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">Info<br />Gangguan</span>
           </div>
           <div className="menu-item" onClick={() => togglePopup('popup-menu-lainnya')}>
             <div className="menu-icon-box"><Layers className="w-6 h-6" /></div>
-            <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">Menu<br/>Lainnya</span>
+            <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">Menu<br />Lainnya</span>
           </div>
         </div>
 
         <div className="flex justify-between items-center mb-4 px-1 mt-2">
           <h3 className="font-extrabold text-gray-800 text-base">Riwayat Pemakaian</h3>
           <div className="relative">
-            <select className="appearance-none bg-gray-100 text-gray-600 text-[10px] font-semibold px-3 py-1.5 pr-6 rounded-md border-none outline-none cursor-pointer">
+            <select defaultValue="6 Bulan" className="appearance-none bg-gray-100 text-gray-600 text-[10px] font-semibold px-3 py-1.5 pr-6 rounded-md border-none outline-none cursor-pointer">
               <option>1 Bulan</option>
               <option>3 Bulan</option>
-              <option selected>6 Bulan</option>
+              <option>6 Bulan</option>
               <option>1 Tahun</option>
             </select>
             <ChevronDown className="w-3 h-3 text-gray-400 absolute right-2.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
           </div>
         </div>
-        
+
         <div className="bg-white rounded-[20px] p-5 shadow-[0_8px_20px_rgba(0,0,0,0.04)] border border-gray-50 mb-10">
           {/* NEW: Insight Block */}
           <div className="mb-5 flex items-start justify-between">
@@ -151,7 +163,7 @@ function Home({ togglePopup, setActiveTab }: { togglePopup: (id: string) => void
               </div>
               <p className="text-[9px] text-gray-400 font-medium mt-1.5">dibanding bulan lalu</p>
             </div>
-            
+
             <div className="bg-[#f8fafc] rounded-xl px-3 py-2 border border-gray-100 flex flex-col items-end shadow-sm">
               <span className="text-[9px] text-gray-400 font-extrabold uppercase tracking-wider mb-0.5">Normal</span>
               <span className="text-[12px] font-extrabold text-[#2a81d4]">18-24 m³</span>
@@ -162,17 +174,17 @@ function Home({ togglePopup, setActiveTab }: { togglePopup: (id: string) => void
             {['Jan', 'Feb', 'Mar', 'Apr', 'Mei'].map((month, i) => (
               <div key={month} className="flex flex-col items-center gap-1.5 flex-1 group h-full justify-end">
                 <span className="text-[9px] font-bold text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">{12 + i * 2}m³</span>
-                <div className="w-full bg-blue-50 rounded-t-md relative overflow-hidden group-hover:bg-[#4798e1] transition-colors cursor-pointer" style={{height: `${40 + i*5}%`}}></div>
+                <div className="w-full bg-blue-50 rounded-t-md relative overflow-hidden group-hover:bg-[#4798e1] transition-colors cursor-pointer" style={{ height: `${40 + i * 5}%` }}></div>
                 <span className="text-[10px] font-semibold text-gray-400">{month}</span>
               </div>
             ))}
             <div className="flex flex-col items-center gap-1.5 flex-1 group h-full justify-end">
               <span className="text-[9px] font-bold text-[#2a81d4]">25m³</span>
-              <div className="w-full bg-gradient-to-t from-[#2a81d4] to-[#4798e1] rounded-t-md relative overflow-hidden shadow-md cursor-pointer" style={{height: '85%'}}></div>
+              <div className="w-full bg-gradient-to-t from-[#2a81d4] to-[#4798e1] rounded-t-md relative overflow-hidden shadow-md cursor-pointer" style={{ height: '85%' }}></div>
               <span className="text-[10px] font-extrabold text-[#2a81d4]">Jun</span>
             </div>
           </div>
-          
+
           <div className="flex items-center justify-between pt-3 border-t border-gray-100 mt-1">
             <div className="flex items-center gap-1.5">
               <div className="w-2 h-2 rounded-full bg-[#2a81d4]"></div>
@@ -211,7 +223,7 @@ function BayarTagihan({ setActiveTab }: { setActiveTab: (tab: string) => void })
             </select>
             <ChevronDown className="text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none w-4 h-4" />
           </div>
-          
+
           <div className="flex gap-2">
             <button className="flex-1 bg-[#2a81d4] text-white text-[12px] font-bold px-4 py-3 rounded-xl flex justify-between items-center shadow-md shadow-blue-500/20">
               <span>Pilih periode</span>
@@ -293,7 +305,7 @@ function InfoGangguan({ setActiveTab }: { setActiveTab: (tab: string) => void })
           </button>
           <h1 className="text-[17px] font-extrabold text-gray-800 tracking-tight flex-1">Gangguan Air</h1>
         </div>
-        
+
         <div className="relative w-full">
           <input type="text" placeholder="Cari Info Gangguan" className="w-full bg-gray-100 text-gray-800 text-[12px] font-bold px-5 py-3.5 pr-12 rounded-2xl outline-none focus:ring-2 focus:ring-[#2a81d4]/30 focus:bg-white transition-all shadow-inner" />
           <div className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#2a81d4] text-white rounded-xl flex items-center justify-center shadow-md cursor-pointer hover:bg-[#1f6db8] transition">
@@ -318,9 +330,9 @@ function InfoGangguan({ setActiveTab }: { setActiveTab: (tab: string) => void })
         <div className="modern-card p-5">
           <p className="text-[#2a81d4] font-extrabold text-[12px] mb-2">21 Januari 2025 02:50</p>
           <p className="text-gray-700 text-[12px] leading-relaxed mb-3 font-medium">
-            Informasi Gangguan Air Senin, 21 Juli 2025<br/><br/>
-            Halo <span className="text-[#47c4f4] font-bold">#SobatAir</span> Surabaya!<br/>
-            Pada Senin, 21 Juli 2025 pukul 10.00 WIB hingga selesai (estimasi pekerjaan +/- 4 jam), akan dilaksanakan Pekerjaan perbaikan pipa bocor diameter 150mm di Jl Kebraon Gang Tomat, Pelayanan distribusi air ke pelanggan akan mengalami kendala (air mengecil sampai dengan tidak keluar) selama proses pekerjaan tersebut.<br/><br/>
+            Informasi Gangguan Air Senin, 21 Juli 2025<br /><br />
+            Halo <span className="text-[#47c4f4] font-bold">#SobatAir</span> Surabaya!<br />
+            Pada Senin, 21 Juli 2025 pukul 10.00 WIB hingga selesai (estimasi pekerjaan +/- 4 jam), akan dilaksanakan Pekerjaan perbaikan pipa bocor diameter 150mm di Jl Kebraon Gang Tomat, Pelayanan distribusi air ke pelanggan akan mengalami kendala (air mengecil sampai dengan tidak keluar) selama proses pekerjaan tersebut.<br /><br />
             Daerah Terdampak :
           </p>
           <div className="bg-gray-200 rounded-xl flex items-center justify-center text-gray-400 w-full h-48 group overflow-hidden cursor-pointer">
@@ -409,12 +421,12 @@ function JadwalCatatMeter({ setActiveTab }: { setActiveTab: (tab: string) => voi
               </div>
             </div>
           </div>
-          
+
           <h3 className="text-[16px] font-extrabold text-gray-800 mb-2">Belum ada pelanggan dipilih</h3>
           <p className="text-[12px] font-medium text-gray-500 mb-8 leading-relaxed max-w-[240px] mx-auto">
             Pilih nomor pelanggan di atas untuk melihat jadwal pencatatan meter Anda.
           </p>
-          
+
           <button className="bg-[#2a81d4] hover:bg-[#1f6db8] text-white text-[13px] font-extrabold py-3.5 px-6 rounded-2xl shadow-[0_8px_20px_rgba(42,129,212,0.25)] transition-all flex items-center gap-2">
             <Plus className="w-4 h-4" /> Tambah Pelanggan
           </button>
@@ -438,17 +450,15 @@ function CatatMeterMandiri({ setActiveTab }: { setActiveTab: (tab: string) => vo
       </div>
 
       <div className="flex-1 overflow-y-auto hide-scrollbar px-5 pt-4 pb-10 flex flex-col gap-5">
-        <div className="bg-gray-100/80 p-1.5 rounded-[18px] flex items-center mx-auto w-[280px] border border-gray-200/50 relative z-20">
-          <button 
-            type="button"
-            className={`flex-1 text-[11px] font-bold py-2.5 rounded-2xl cursor-pointer pointer-events-auto transition ${subTab === 'catat' ? 'bg-white text-[#2a81d4] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+        <div className="bg-gray-100/80 p-1.5 rounded-[18px] flex items-center mx-auto w-[280px] border border-gray-200/50">
+          <button
+            className={`flex-1 text-[11px] font-bold py-2.5 rounded-2xl transition ${subTab === 'catat' ? 'bg-white text-[#2a81d4] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
             onClick={() => setSubTab('catat')}
           >
             Catat Meter
           </button>
-          <button 
-            type="button"
-            className={`flex-1 text-[11px] font-bold py-2.5 rounded-2xl cursor-pointer pointer-events-auto transition ${subTab === 'riwayat' ? 'bg-white text-[#2a81d4] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+          <button
+            className={`flex-1 text-[11px] font-bold py-2.5 rounded-2xl transition ${subTab === 'riwayat' ? 'bg-white text-[#2a81d4] shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
             onClick={() => setSubTab('riwayat')}
           >
             Riwayat
@@ -458,116 +468,116 @@ function CatatMeterMandiri({ setActiveTab }: { setActiveTab: (tab: string) => vo
         {subTab === 'catat' ? (
           <div className="flex flex-col gap-5 animate-fade-in">
             <div className="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-100 rounded-2xl p-4 flex items-center justify-between shadow-sm">
-          <div className="flex items-center gap-3 text-orange-600">
-            <div className="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center">
-              <Hourglass className="w-4 h-4 animate-pulse" />
-            </div>
-            <div>
-              <span className="block text-[9px] font-bold uppercase tracking-widest text-orange-500 mb-0.5">Sisa Waktu</span>
-              <div className="text-sm font-extrabold text-orange-800 leading-none">3 Hari 14 Jam</div>
-            </div>
-          </div>
-        </div>
-
-        <button className="w-full bg-white text-[#2a81d4] border border-[#2a81d4] text-[13px] font-extrabold py-3.5 rounded-2xl flex justify-center items-center gap-2 hover:bg-blue-50 transition-all mt-1">
-          <Info className="w-4 h-4" />
-          Lihat Petunjuk
-        </button>
-
-        {/* Wizard Stepper */}
-        <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col mt-2">
-          {/* Progress Circles & Line */}
-          <div className="relative flex justify-between items-center px-4 mb-2">
-            {/* Absolute Line (Background) */}
-            <div className="absolute top-1/2 left-8 right-8 h-1 bg-gray-100 -translate-y-1/2 z-0"></div>
-            {/* Active Line (Foreground) */}
-            <div className="absolute top-1/2 left-8 w-[30%] h-1 bg-gradient-to-r from-[#2a81d4] to-[#47c4f4] -translate-y-1/2 z-0 transition-all duration-500 rounded-r-full shadow-[0_0_8px_rgba(71,196,244,0.6)]"></div>
-
-            {/* Circles */}
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2a81d4] to-[#47c4f4] text-white flex items-center justify-center font-extrabold text-[12px] relative z-10 shadow-md ring-4 ring-white transition-transform transform hover:scale-110">1</div>
-            <div className="w-8 h-8 rounded-full bg-white text-[#2a81d4] border-2 border-[#2a81d4] flex items-center justify-center font-extrabold text-[12px] relative z-10 shadow-sm ring-4 ring-white animate-pulse">2</div>
-            <div className="w-8 h-8 rounded-full bg-white text-gray-300 border-2 border-gray-200 flex items-center justify-center font-extrabold text-[12px] relative z-10 ring-4 ring-white">3</div>
-            <div className="w-8 h-8 rounded-full bg-white text-gray-300 border-2 border-gray-200 flex items-center justify-center font-extrabold text-[12px] relative z-10 ring-4 ring-white">4</div>
-          </div>
-          
-          {/* Text Labels */}
-          <div className="flex justify-between items-center text-[9px] font-extrabold text-gray-400 uppercase tracking-widest px-0">
-            <span className="text-[#2a81d4] text-center w-12 ml-2">Pelanggan</span>
-            <span className="text-[#2a81d4] text-center w-12">Lokasi</span>
-            <span className="text-center w-12">Foto</span>
-            <span className="text-center w-12 mr-2">Selesai</span>
-          </div>
-
-          <div className="mt-4 pt-3 border-t border-gray-100 text-center">
-            <span className="inline-block bg-blue-50 text-[#2a81d4] text-[10px] font-extrabold px-3 py-1.5 rounded-full">
-              Langkah 2 dari 4: Verifikasi Lokasi Anda
-            </span>
-          </div>
-        </div>
-
-        <div className="modern-card p-4">
-          <label className="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-2">Pilih Pelanggan</label>
-          <div className="relative">
-            <select className="w-full appearance-none bg-gray-50 border-0 text-gray-800 text-[13px] font-bold px-4 py-3.5 rounded-xl outline-none focus:ring-2 focus:ring-[#2a81d4]/30 transition shadow-inner">
-              <option>Nomor Pelanggan (ID: 1234 5678)</option>
-            </select>
-            <ChevronDown className="text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none w-4 h-4" />
-          </div>
-        </div>
-
-        <div className="modern-card p-4">
-          <label className="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-3">Lokasi Anda</label>
-          
-          <div className="bg-red-50 border border-red-100 rounded-xl p-3 mb-4 flex items-start gap-3 shadow-sm">
-            <div className="w-7 h-7 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 text-red-500 mt-0.5">
-              <MapPin className="w-3 h-3" />
-            </div>
-            <p className="text-[11px] leading-snug font-medium text-red-700">
-              Lokasi Anda tidak terbaca. Silakan aktifkan GPS/Lokasi di pengaturan HP Anda dan <a href="#" className="font-extrabold underline text-red-800 hover:text-red-900 transition">Deteksi Ulang</a>.
-            </p>
-          </div>
-
-          <div className="relative w-full h-[180px] bg-gray-100 rounded-xl overflow-hidden border border-gray-200/50">
-            <iframe 
-                width="100%" 
-                height="100%" 
-                style={{border:0}} 
-                loading="lazy" 
-                allowFullScreen 
-                src="https://www.openstreetmap.org/export/embed.html?bbox=112.730,-7.260,112.740,-7.250&amp;layer=mapnik&amp;marker=-7.255,112.735">
-            </iframe>
-            
-            <div className="absolute right-3 top-3 bg-white/90 backdrop-blur w-9 h-9 rounded-full shadow-md border border-gray-100 flex items-center justify-center text-[#2a81d4] cursor-pointer hover:bg-blue-50 transition">
-              <Crosshair className="w-4 h-4" />
-            </div>
-          </div>
-        </div>
-
-        <div className="modern-card p-4">
-          <label className="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-1.5">Foto Meteran</label>
-          <p className="text-[10px] text-gray-500 mb-4 leading-relaxed">Pastikan angka merah dan hitam pada meteran terlihat jelas dan foto diambil di tempat terang.</p>
-
-          <div className="flex gap-3">
-            <div className="flex-1 bg-[#f8fbff] border-2 border-dashed border-[#b3d4f5] rounded-2xl flex flex-col items-center justify-center py-6 cursor-pointer hover:bg-[#eaf4ff] hover:border-[#2a81d4] transition-all group">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#2a81d4] shadow-sm mb-3 group-hover:scale-110 group-hover:shadow-md transition-all">
-                <Camera className="w-5 h-5" />
+              <div className="flex items-center gap-3 text-orange-600">
+                <div className="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center">
+                  <Hourglass className="w-4 h-4 animate-pulse" />
+                </div>
+                <div>
+                  <span className="block text-[9px] font-bold uppercase tracking-widest text-orange-500 mb-0.5">Sisa Waktu</span>
+                  <div className="text-sm font-extrabold text-orange-800 leading-none">3 Hari 14 Jam</div>
+                </div>
               </div>
-              <span className="text-[11px] font-extrabold text-[#2a81d4]">Ambil Foto</span>
             </div>
-            
-            <div className="flex-1 bg-gray-50 border border-gray-200/60 rounded-2xl flex flex-col items-center justify-center py-6 cursor-pointer hover:bg-gray-100 transition-all group">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-500 shadow-sm mb-3 group-hover:scale-110 group-hover:shadow-md transition-all">
-                <ImageIcon className="w-5 h-5" />
+
+            <button className="w-full bg-white text-[#2a81d4] border border-[#2a81d4] text-[13px] font-extrabold py-3.5 rounded-2xl flex justify-center items-center gap-2 hover:bg-blue-50 transition-all mt-1">
+              <Info className="w-4 h-4" />
+              Lihat Petunjuk
+            </button>
+
+            {/* Wizard Stepper */}
+            <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col mt-2">
+              {/* Progress Circles & Line */}
+              <div className="relative flex justify-between items-center px-4 mb-2">
+                {/* Absolute Line (Background) */}
+                <div className="absolute top-1/2 left-8 right-8 h-1 bg-gray-100 -translate-y-1/2 z-0"></div>
+                {/* Active Line (Foreground) */}
+                <div className="absolute top-1/2 left-8 w-[30%] h-1 bg-gradient-to-r from-[#2a81d4] to-[#47c4f4] -translate-y-1/2 z-0 transition-all duration-500 rounded-r-full shadow-[0_0_8px_rgba(71,196,244,0.6)]"></div>
+
+                {/* Circles */}
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2a81d4] to-[#47c4f4] text-white flex items-center justify-center font-extrabold text-[12px] relative z-10 shadow-md ring-4 ring-white transition-transform transform hover:scale-110">1</div>
+                <div className="w-8 h-8 rounded-full bg-white text-[#2a81d4] border-2 border-[#2a81d4] flex items-center justify-center font-extrabold text-[12px] relative z-10 shadow-sm ring-4 ring-white animate-pulse">2</div>
+                <div className="w-8 h-8 rounded-full bg-white text-gray-300 border-2 border-gray-200 flex items-center justify-center font-extrabold text-[12px] relative z-10 ring-4 ring-white">3</div>
+                <div className="w-8 h-8 rounded-full bg-white text-gray-300 border-2 border-gray-200 flex items-center justify-center font-extrabold text-[12px] relative z-10 ring-4 ring-white">4</div>
               </div>
-              <span className="text-[11px] font-extrabold text-gray-600">Buka Galeri</span>
+
+              {/* Text Labels */}
+              <div className="flex justify-between items-center text-[9px] font-extrabold text-gray-400 uppercase tracking-widest px-0">
+                <span className="text-[#2a81d4] text-center w-12 ml-2">Pelanggan</span>
+                <span className="text-[#2a81d4] text-center w-12">Lokasi</span>
+                <span className="text-center w-12">Foto</span>
+                <span className="text-center w-12 mr-2">Selesai</span>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-gray-100 text-center">
+                <span className="inline-block bg-blue-50 text-[#2a81d4] text-[10px] font-extrabold px-3 py-1.5 rounded-full">
+                  Langkah 2 dari 4: Verifikasi Lokasi Anda
+                </span>
+              </div>
             </div>
-          </div>
-        </div>
+
+            <div className="modern-card p-4">
+              <label className="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-2">Pilih Pelanggan</label>
+              <div className="relative">
+                <select className="w-full appearance-none bg-gray-50 border-0 text-gray-800 text-[13px] font-bold px-4 py-3.5 rounded-xl outline-none focus:ring-2 focus:ring-[#2a81d4]/30 transition shadow-inner">
+                  <option>Nomor Pelanggan (ID: 1234 5678)</option>
+                </select>
+                <ChevronDown className="text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none w-4 h-4" />
+              </div>
+            </div>
+
+            <div className="modern-card p-4">
+              <label className="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-3">Lokasi Anda</label>
+
+              <div className="bg-red-50 border border-red-100 rounded-xl p-3 mb-4 flex items-start gap-3 shadow-sm">
+                <div className="w-7 h-7 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 text-red-500 mt-0.5">
+                  <MapPin className="w-3 h-3" />
+                </div>
+                <p className="text-[11px] leading-snug font-medium text-red-700">
+                  Lokasi Anda tidak terbaca. Silakan aktifkan GPS/Lokasi di pengaturan HP Anda dan <a href="#" className="font-extrabold underline text-red-800 hover:text-red-900 transition">Deteksi Ulang</a>.
+                </p>
+              </div>
+
+              <div className="relative w-full h-[180px] bg-gray-100 rounded-xl overflow-hidden border border-gray-200/50">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  allowFullScreen
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=112.730,-7.260,112.740,-7.250&amp;layer=mapnik&amp;marker=-7.255,112.735">
+                </iframe>
+
+                <div className="absolute right-3 top-3 bg-white/90 backdrop-blur w-9 h-9 rounded-full shadow-md border border-gray-100 flex items-center justify-center text-[#2a81d4] cursor-pointer hover:bg-blue-50 transition">
+                  <Crosshair className="w-4 h-4" />
+                </div>
+              </div>
+            </div>
+
+            <div className="modern-card p-4">
+              <label className="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-1.5">Foto Meteran</label>
+              <p className="text-[10px] text-gray-500 mb-4 leading-relaxed">Pastikan angka merah dan hitam pada meteran terlihat jelas dan foto diambil di tempat terang.</p>
+
+              <div className="flex gap-3">
+                <div className="flex-1 bg-[#f8fbff] border-2 border-dashed border-[#b3d4f5] rounded-2xl flex flex-col items-center justify-center py-6 cursor-pointer hover:bg-[#eaf4ff] hover:border-[#2a81d4] transition-all group">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#2a81d4] shadow-sm mb-3 group-hover:scale-110 group-hover:shadow-md transition-all">
+                    <Camera className="w-5 h-5" />
+                  </div>
+                  <span className="text-[11px] font-extrabold text-[#2a81d4]">Ambil Foto</span>
+                </div>
+
+                <div className="flex-1 bg-gray-50 border border-gray-200/60 rounded-2xl flex flex-col items-center justify-center py-6 cursor-pointer hover:bg-gray-100 transition-all group">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-500 shadow-sm mb-3 group-hover:scale-110 group-hover:shadow-md transition-all">
+                    <ImageIcon className="w-5 h-5" />
+                  </div>
+                  <span className="text-[11px] font-extrabold text-gray-600">Buka Galeri</span>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="flex flex-col gap-4 animate-fade-in">
             <h3 className="font-extrabold text-gray-800 text-[14px] px-1 mt-1">Riwayat Pencatatan Anda</h3>
-            
+
             <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col gap-3 hover:shadow-md transition">
               <div className="flex justify-between items-start">
                 <div>
@@ -624,7 +634,7 @@ function CatatMeterMandiri({ setActiveTab }: { setActiveTab: (tab: string) => vo
                 <span className="flex items-center gap-1 text-[#2a81d4] font-bold cursor-pointer hover:underline">Lihat Foto <ChevronRight className="w-3 h-3" /></span>
               </div>
             </div>
-            
+
             <div className="text-center mt-2 mb-4">
               <button className="text-[11px] font-bold text-gray-400 hover:text-[#2a81d4] transition">Tampilkan Lebih Banyak</button>
             </div>
@@ -702,7 +712,7 @@ function SlipCatatMeter({ setActiveTab }: { setActiveTab: (tab: string) => void 
             </select>
             <ChevronDown className="text-gray-400 absolute right-4 bottom-4 pointer-events-none w-4 h-4" />
           </div>
-          
+
           <div className="mb-5">
             <label className="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-2">Periode</label>
             <button className="w-full bg-[#f8fbff] text-[#2a81d4] text-[13px] font-extrabold px-4 py-3.5 rounded-xl flex justify-between items-center shadow-inner border border-[#b3d4f5]">
@@ -710,7 +720,7 @@ function SlipCatatMeter({ setActiveTab }: { setActiveTab: (tab: string) => void 
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-          
+
           <button className="w-full bg-[#2a81d4] hover:bg-[#1f6db8] text-white text-[13px] font-extrabold py-3.5 rounded-2xl shadow-[0_8px_20px_rgba(42,129,212,0.25)] hover:shadow-[0_4px_10px_rgba(42,129,212,0.2)] transition-all">
             Submit
           </button>
@@ -756,7 +766,7 @@ function GrafikTagihan({ setActiveTab }: { setActiveTab: (tab: string) => void }
             </select>
             <ChevronDown className="text-gray-400 absolute right-4 bottom-4 pointer-events-none w-4 h-4" />
           </div>
-          
+
           <div className="mb-5">
             <label className="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-2">Periode</label>
             <button className="w-full bg-[#f8fbff] text-[#2a81d4] text-[13px] font-extrabold px-4 py-3.5 rounded-xl flex justify-between items-center shadow-inner border border-[#b3d4f5]">
@@ -764,7 +774,7 @@ function GrafikTagihan({ setActiveTab }: { setActiveTab: (tab: string) => void }
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-          
+
           <button className="w-full bg-[#2a81d4] hover:bg-[#1f6db8] text-white text-[13px] font-extrabold py-3.5 rounded-2xl shadow-[0_8px_20px_rgba(42,129,212,0.25)] hover:shadow-[0_4px_10px_rgba(42,129,212,0.2)] transition-all">
             Submit
           </button>
@@ -793,7 +803,7 @@ function GrafikSmartMeter({ setActiveTab }: { setActiveTab: (tab: string) => voi
             </div>
           </div>
           <div className="bg-[#dcfce7] text-[#166534] text-[11px] font-extrabold px-4 py-2.5 rounded-xl border border-[#bbf7d0] shadow-sm text-center">
-            Pilih nomor pelanggan dan<br/>periode tanggal
+            Pilih nomor pelanggan dan<br />periode tanggal
           </div>
         </div>
 
@@ -805,12 +815,12 @@ function GrafikSmartMeter({ setActiveTab }: { setActiveTab: (tab: string) => voi
             </select>
             <ChevronDown className="text-gray-400 absolute right-4 bottom-4 pointer-events-none w-4 h-4" />
           </div>
-          
+
           <div className="mb-5">
             <label className="block text-gray-400 text-[9px] font-extrabold uppercase tracking-widest mb-2">Pilih Tanggal</label>
             <input type="text" placeholder="Periode tanggal" className="w-full bg-gray-50 border-0 text-gray-800 text-[13px] font-bold px-4 py-3.5 rounded-xl outline-none focus:ring-2 focus:ring-[#2a81d4]/30 transition shadow-inner" />
           </div>
-          
+
           <button className="w-full bg-[#2a81d4] hover:bg-[#1f6db8] text-white text-[13px] font-extrabold py-3.5 rounded-2xl shadow-[0_8px_20px_rgba(42,129,212,0.25)] hover:shadow-[0_4px_10px_rgba(42,129,212,0.2)] transition-all">
             Submit
           </button>
@@ -823,7 +833,7 @@ function GrafikSmartMeter({ setActiveTab }: { setActiveTab: (tab: string) => voi
 // --- PASANG BARU COMPONENT ---
 function PasangBaru() {
   const [subTab, setSubTab] = useState('baru');
-  
+
   return (
     <>
       <div className="glass-header sticky top-0 z-40 px-6 py-4 flex items-center gap-4">
@@ -832,14 +842,14 @@ function PasangBaru() {
 
       <div className="flex-1 px-5 pt-4 flex flex-col gap-4 overflow-y-auto hide-scrollbar">
         <div className="bg-gray-200/50 p-1 rounded-xl flex mb-2 w-full max-w-[320px] mx-auto">
-          <button 
-            className={`flex-1 py-2.5 text-[11px] font-bold rounded-lg transition-all ${subTab === 'baru' ? 'bg-white text-[#47c4f4] shadow-sm font-extrabold' : 'text-gray-500 hover:text-gray-700'}`} 
+          <button
+            className={`flex-1 py-2.5 text-[11px] font-bold rounded-lg transition-all ${subTab === 'baru' ? 'bg-white text-[#47c4f4] shadow-sm font-extrabold' : 'text-gray-500 hover:text-gray-700'}`}
             onClick={() => setSubTab('baru')}
           >
             Pengajuan Pasang Baru
           </button>
-          <button 
-            className={`flex-1 py-2.5 text-[11px] font-bold rounded-lg transition-all ${subTab === 'monitoring' ? 'bg-white text-[#47c4f4] shadow-sm font-extrabold' : 'text-gray-500 hover:text-gray-700'}`} 
+          <button
+            className={`flex-1 py-2.5 text-[11px] font-bold rounded-lg transition-all ${subTab === 'monitoring' ? 'bg-white text-[#47c4f4] shadow-sm font-extrabold' : 'text-gray-500 hover:text-gray-700'}`}
             onClick={() => setSubTab('monitoring')}
           >
             Monitoring
@@ -864,7 +874,7 @@ function PasangBaru() {
                 <Search className="w-4 h-4" />
               </div>
             </div>
-            
+
             <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
               <div className="flex justify-between items-start mb-3">
                 <div>
@@ -874,15 +884,15 @@ function PasangBaru() {
                 </div>
                 <span className="text-[10px] font-bold text-gray-400">15 Jul</span>
               </div>
-              
+
               <hr className="border-gray-100 my-4" />
-              
+
               <h4 className="text-[12px] font-extrabold text-gray-800 mb-4">Status Pengajuan</h4>
-              
+
               <div className="relative pl-3 space-y-6">
                 <div className="absolute left-5 top-2 bottom-6 w-0.5 bg-gray-200"></div>
                 <div className="absolute left-5 top-2 h-[75%] w-0.5 bg-[#47c4f4]"></div>
-                
+
                 <div className="relative flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full bg-[#47c4f4] text-white flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_0_4px_white]">
                     <Activity className="w-3 h-3" />
@@ -893,7 +903,7 @@ function PasangBaru() {
                     <p className="text-[10px] text-gray-400 mt-0.5">15 Jul 2023, 08:30 WIB</p>
                   </div>
                 </div>
-                
+
                 <div className="relative flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full bg-[#47c4f4] text-white flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_0_4px_white]">
                     <Activity className="w-3 h-3" />
@@ -904,7 +914,7 @@ function PasangBaru() {
                     <p className="text-[10px] text-gray-400 mt-0.5">15 Jul 2023, 10:15 WIB</p>
                   </div>
                 </div>
-                
+
                 <div className="relative flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full bg-[#47c4f4] text-white flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_0_4px_white]">
                     <Activity className="w-3 h-3" />
@@ -915,7 +925,7 @@ function PasangBaru() {
                     <p className="text-[10px] text-gray-400 mt-0.5">16 Jul 2023, 14:00 WIB</p>
                   </div>
                 </div>
-                
+
                 <div className="relative flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full bg-white border-2 border-[#47c4f4] text-[#47c4f4] flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_0_4px_white]">
                     <div className="w-2 h-2 rounded-full bg-[#47c4f4] animate-pulse"></div>
@@ -925,7 +935,7 @@ function PasangBaru() {
                     <p className="text-[10px] text-gray-500">Proses instalasi meteran sedang dijadwalkan.</p>
                   </div>
                 </div>
-                
+
                 <div className="relative flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_0_4px_white]">
                   </div>
@@ -965,7 +975,7 @@ function Laporan() {
         <div>
           <textarea placeholder="Deskripsi Pelanggaran / Kronologi" className="modern-input h-32 resize-none"></textarea>
         </div>
-        
+
         <div className="mb-2">
           <div className="relative">
             <span className="absolute -top-2 left-3 bg-[#f8fafc] px-1 text-[10px] font-bold text-[#2a81d4]">Bukti Lampiran (Opsional)</span>
@@ -976,7 +986,7 @@ function Laporan() {
             </div>
           </div>
         </div>
-        
+
         <button className="w-full bg-[#2a81d4] hover:bg-[#1f6db8] text-white text-[14px] font-extrabold py-3.5 rounded-2xl shadow-md transition-all mt-2">
           Kirim Laporan Rahasia
         </button>
@@ -997,14 +1007,14 @@ function Pengaduan() {
 
       <div className="flex-1 px-5 pt-4 pb-24 flex flex-col gap-4 overflow-y-auto hide-scrollbar relative">
         <div className="bg-gray-200/50 p-1 rounded-xl flex mb-2 w-full max-w-[320px] mx-auto">
-          <button 
-            className={`flex-1 py-2.5 text-[11px] font-bold rounded-lg transition-all ${subTab === 'baru' ? 'bg-white text-[#47c4f4] shadow-sm font-extrabold' : 'text-gray-500 hover:text-gray-700'}`} 
+          <button
+            className={`flex-1 py-2.5 text-[11px] font-bold rounded-lg transition-all ${subTab === 'baru' ? 'bg-white text-[#47c4f4] shadow-sm font-extrabold' : 'text-gray-500 hover:text-gray-700'}`}
             onClick={() => setSubTab('baru')}
           >
             Pengaduan Baru
           </button>
-          <button 
-            className={`flex-1 py-2.5 text-[11px] font-bold rounded-lg transition-all ${subTab === 'monitoring' ? 'bg-white text-[#47c4f4] shadow-sm font-extrabold' : 'text-gray-500 hover:text-gray-700'}`} 
+          <button
+            className={`flex-1 py-2.5 text-[11px] font-bold rounded-lg transition-all ${subTab === 'monitoring' ? 'bg-white text-[#47c4f4] shadow-sm font-extrabold' : 'text-gray-500 hover:text-gray-700'}`}
             onClick={() => setSubTab('monitoring')}
           >
             Monitoring
@@ -1013,13 +1023,13 @@ function Pengaduan() {
 
         {subTab === 'baru' ? (
           <div className="flex flex-col gap-4 animate-fade-in">
-            <select className="modern-input custom-select text-gray-500">
-              <option value="" disabled selected>Pilih nomor pelanggan</option>
+            <select defaultValue="" className="modern-input custom-select text-gray-500">
+              <option value="" disabled>Pilih nomor pelanggan</option>
               <option value="1">123456789 - John Doe</option>
             </select>
 
-            <select className="modern-input custom-select text-gray-500">
-              <option value="" disabled selected>Pilih jenis pengaduan</option>
+            <select defaultValue="" className="modern-input custom-select text-gray-500">
+              <option value="" disabled>Pilih jenis pengaduan</option>
               <option value="air_mati">Air Mati / Tidak Mengalir</option>
               <option value="pipa_bocor">Pipa Bocor</option>
               <option value="air_keruh">Air Keruh</option>
@@ -1033,7 +1043,7 @@ function Pengaduan() {
             <div>
               <h4 className="text-[#47c4f4] font-extrabold text-[12px] mb-2 ml-1">Lokasi anda :</h4>
               <div className="w-full h-48 bg-[#e2e8f0] rounded-2xl border-2 border-white shadow-inner relative overflow-hidden flex items-center justify-center cursor-pointer group">
-                <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px'}}></div>
+                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
                 <div className="text-center relative z-10 group-hover:scale-110 transition-transform">
                   <MapPin className="text-red-500 w-10 h-10 drop-shadow-md mb-2" />
                 </div>
@@ -1069,18 +1079,18 @@ function Pengaduan() {
                 </div>
               </div>
             </div>
-            
+
             <button className="w-full bg-[#2a81d4] hover:bg-[#1f6db8] text-white text-[14px] font-extrabold py-3.5 rounded-2xl shadow-md transition-all mt-4 mb-24">
               Kirim Keluhan
             </button>
           </div>
         ) : (
           <div className="flex flex-col gap-4 animate-fade-in w-full h-full pb-20">
-            <select className="modern-input custom-select text-gray-500 w-full">
-              <option value="" disabled selected>Pilih nomor pelanggan</option>
+            <select defaultValue="" className="modern-input custom-select text-gray-500 w-full">
+              <option value="" disabled>Pilih nomor pelanggan</option>
               <option value="1">123456789 - John Doe</option>
             </select>
-            
+
             <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm mt-2">
               <div className="flex justify-between items-start mb-3">
                 <div>
@@ -1090,15 +1100,15 @@ function Pengaduan() {
                 </div>
                 <span className="text-[10px] font-bold text-gray-400">15 Jul</span>
               </div>
-              
+
               <hr className="border-gray-100 my-4" />
-              
+
               <h4 className="text-[12px] font-extrabold text-gray-800 mb-4">Lacak Laporan</h4>
-              
+
               <div className="relative pl-3 space-y-6">
                 <div className="absolute left-5 top-2 bottom-6 w-0.5 bg-gray-200"></div>
                 <div className="absolute left-5 top-2 h-1/2 w-0.5 bg-[#47c4f4]"></div>
-                
+
                 <div className="relative flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full bg-[#47c4f4] text-white flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_0_4px_white]">
                     <Activity className="w-3 h-3" />
@@ -1109,7 +1119,7 @@ function Pengaduan() {
                     <p className="text-[10px] text-gray-400 mt-0.5">15 Jul 2023, 08:30 WIB</p>
                   </div>
                 </div>
-                
+
                 <div className="relative flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full bg-white border-2 border-[#47c4f4] text-[#47c4f4] flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_0_4px_white]">
                     <div className="w-2 h-2 rounded-full bg-[#47c4f4] animate-pulse"></div>
@@ -1119,7 +1129,7 @@ function Pengaduan() {
                     <p className="text-[10px] text-gray-500">Petugas sedang menuju ke lokasi untuk pengecekan.</p>
                   </div>
                 </div>
-                
+
                 <div className="relative flex items-start gap-4">
                   <div className="w-5 h-5 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center flex-shrink-0 z-10 shadow-[0_0_0_4px_white]">
                   </div>
@@ -1146,7 +1156,7 @@ function Profil() {
       </div>
 
       <div className="flex-1 px-5 pt-4 flex flex-col gap-5 overflow-y-auto hide-scrollbar">
-        
+
         <div className="modern-card p-5">
           <div className="flex items-start justify-between mb-4 border-b border-gray-100 pb-4">
             <div className="flex items-center gap-4">
@@ -1177,11 +1187,11 @@ function Profil() {
               <PenSquare className="w-3 h-3" />
             </button>
           </div>
-          
+
           <div className="bg-red-50 rounded-xl p-3.5 mb-5 border border-red-100 flex items-start gap-3">
             <AlertCircle className="text-red-500 w-5 h-5 mt-0.5 flex-shrink-0" />
             <p className="text-[10.5px] font-bold text-red-600 leading-relaxed">
-              Anda belum menghubungkan email Google anda.<br/>Hubungkan email Google untuk opsi login lebih mudah.
+              Anda belum menghubungkan email Google anda.<br />Hubungkan email Google untuk opsi login lebih mudah.
             </p>
           </div>
 
@@ -1254,7 +1264,7 @@ export default function App() {
 
   return (
     <div className={`mobile-container relative ${hideBottomNav ? '' : 'pb-28'}`}>
-      
+
       {/* Tab Switching Content */}
       {activeTab === 'home' && <Home togglePopup={togglePopup} setActiveTab={handleSetActiveTab} />}
       {activeTab === 'pasang_baru' && <PasangBaru />}
@@ -1273,35 +1283,35 @@ export default function App() {
       {/* Bottom Navigation Bar */}
       {!hideBottomNav && (
         <div className="bottom-nav">
-          <div 
-            className={`nav-item ${activeTab === 'home' ? 'active' : ''}`} 
+          <div
+            className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
             onClick={() => handleSetActiveTab('home')}
           >
-            <Home className="w-5 h-5" /><span className="text-[9px] font-bold">Home</span>
+            <HomeIcon className="w-5 h-5" /><span className="text-[9px] font-bold">Home</span>
           </div>
-          <div 
-            className={`nav-item ${activeTab === 'pasang_baru' ? 'active' : ''}`} 
+          <div
+            className={`nav-item ${activeTab === 'pasang_baru' ? 'active' : ''}`}
             onClick={() => handleSetActiveTab('pasang_baru')}
           >
             <Stethoscope className="w-5 h-5" /><span className="text-[9px] font-bold">Pasang Baru</span>
           </div>
-          
+
           {/* Laporan FAB */}
-          <div 
+          <div
             className={`nav-fab ${activeTab === 'laporan' ? 'active' : ''}`}
             onClick={() => handleSetActiveTab('laporan')}
           >
             <Megaphone className="w-6 h-6" />
           </div>
 
-          <div 
-            className={`nav-item ${activeTab === 'pengaduan' ? 'active' : ''}`} 
+          <div
+            className={`nav-item ${activeTab === 'pengaduan' ? 'active' : ''}`}
             onClick={() => handleSetActiveTab('pengaduan')}
           >
             <MessageSquare className="w-5 h-5" /><span className="text-[9px] font-bold">Pengaduan</span>
           </div>
-          <div 
-            className={`nav-item ${activeTab === 'profil' ? 'active' : ''}`} 
+          <div
+            className={`nav-item ${activeTab === 'profil' ? 'active' : ''}`}
             onClick={() => handleSetActiveTab('profil')}
           >
             <User className="w-5 h-5" /><span className="text-[9px] font-bold">Profil</span>
@@ -1313,59 +1323,59 @@ export default function App() {
       {/* ============================================== */}
       {/* OVERLAY DAN BOTTOM SHEET UNTUK POPUPS */}
       {/* ============================================== */}
-      
+
       {/* POPUP: CATAT METER */}
       {activePopup === 'popup-catat-meter' && (
         <div className="fixed inset-0 z-[100] flex items-end justify-center">
           <div className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm transition-opacity cursor-pointer" onClick={() => togglePopup('popup-catat-meter')}></div>
-          
+
           <div className="relative w-full bg-white rounded-t-[32px] pt-4 pb-8 px-6 shadow-[0_-10px_50px_rgba(0,0,0,0.15)] flex flex-col animate-slide-up max-w-[480px]">
             <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6 cursor-pointer" onClick={() => togglePopup('popup-catat-meter')}></div>
-            
+
             <h2 className="text-gray-800 font-extrabold text-[15px] mb-5 px-1">Menu Catat Meter</h2>
 
             <div className="grid grid-cols-2 gap-3 mb-2">
-              <div 
+              <div
                 className="bg-[#f8fafc] border border-gray-100 p-4 rounded-2xl flex flex-col gap-3 cursor-pointer group hover:bg-blue-50 transition-colors"
                 onClick={() => handleSetActiveTab('jadwal_catat_meter')}
               >
                 <div className="w-10 h-10 rounded-full bg-[#e6f4ff] text-[#2a81d4] flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
                   <Clock className="w-5 h-5" />
                 </div>
-                <span className="text-[11px] font-extrabold text-gray-700 leading-tight">Jadwal<br/>Catat Meter</span>
+                <span className="text-[11px] font-extrabold text-gray-700 leading-tight">Jadwal<br />Catat Meter</span>
               </div>
 
-              <div 
+              <div
                 className="bg-gradient-to-br from-[#2a81d4] to-[#1f6db8] p-4 rounded-2xl flex flex-col gap-3 cursor-pointer group shadow-md shadow-blue-500/20"
                 onClick={() => handleSetActiveTab('catat_meter_mandiri')}
               >
                 <div className="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center text-lg group-hover:scale-110 transition-transform backdrop-blur-sm">
                   <Edit className="w-5 h-5" />
                 </div>
-                <span className="text-[11px] font-extrabold text-white leading-tight">Catat Meter<br/>Mandiri</span>
+                <span className="text-[11px] font-extrabold text-white leading-tight">Catat Meter<br />Mandiri</span>
               </div>
 
-              <div 
+              <div
                 className="bg-[#f8fafc] border border-gray-100 p-4 rounded-2xl flex flex-col gap-3 cursor-pointer group hover:bg-blue-50 transition-colors"
                 onClick={() => handleSetActiveTab('slip_catat_meter')}
               >
                 <div className="w-10 h-10 rounded-full bg-[#e6f4ff] text-[#2a81d4] flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
                   <FilePlus className="w-5 h-5" />
                 </div>
-                <span className="text-[11px] font-extrabold text-gray-700 leading-tight">Slip<br/>Catat Meter</span>
+                <span className="text-[11px] font-extrabold text-gray-700 leading-tight">Slip<br />Catat Meter</span>
               </div>
 
-              <div 
+              <div
                 className="bg-[#f8fafc] border border-gray-100 p-4 rounded-2xl flex flex-col gap-3 cursor-pointer group hover:bg-blue-50 transition-colors"
                 onClick={() => handleSetActiveTab('grafik_tagihan')}
               >
                 <div className="w-10 h-10 rounded-full bg-[#e6f4ff] text-[#2a81d4] flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
                   <LineChart className="w-5 h-5" />
                 </div>
-                <span className="text-[11px] font-extrabold text-gray-700 leading-tight">Grafik<br/>Tagihan</span>
+                <span className="text-[11px] font-extrabold text-gray-700 leading-tight">Grafik<br />Tagihan</span>
               </div>
 
-              <div 
+              <div
                 className="col-span-2 bg-[#f8fafc] border border-gray-100 p-4 rounded-2xl flex items-center gap-4 cursor-pointer group hover:bg-blue-50 transition-colors mt-1"
                 onClick={() => handleSetActiveTab('grafik_smart_meter')}
               >
@@ -1386,7 +1396,7 @@ export default function App() {
       {activePopup === 'popup-menu-lainnya' && (
         <div className="fixed inset-0 z-[100] flex items-end justify-center">
           <div className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm transition-opacity cursor-pointer" onClick={() => togglePopup('popup-menu-lainnya')}></div>
-          
+
           <div className="relative w-full bg-white rounded-t-[32px] pt-4 pb-8 px-6 shadow-[0_-10px_50px_rgba(0,0,0,0.15)] flex flex-col animate-slide-up max-w-[480px]">
             <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6 cursor-pointer" onClick={() => togglePopup('popup-menu-lainnya')}></div>
             <h2 className="text-gray-800 font-extrabold text-[15px] mb-5 px-1 text-center">Menu Lainnya</h2>
@@ -1395,19 +1405,19 @@ export default function App() {
                 <div className="w-12 h-12 rounded-full bg-[#e6f4ff] text-[#2a81d4] flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                   <PhoneCall className="w-6 h-6" />
                 </div>
-                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Hubungi<br/>Kami</span>
+                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Hubungi<br />Kami</span>
               </div>
               <div className="bg-[#f8fafc] border border-gray-100 p-4 rounded-2xl flex flex-col items-center gap-3 cursor-pointer group hover:bg-blue-50 transition-colors" onClick={() => { setActivePopup('popup-layanan-komersial'); }}>
                 <div className="w-12 h-12 rounded-full bg-[#e6f4ff] text-[#2a81d4] flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                   <Smartphone className="w-6 h-6" />
                 </div>
-                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Layanan<br/>Komersial</span>
+                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Layanan<br />Komersial</span>
               </div>
               <div className="bg-[#f8fafc] border border-gray-100 p-4 rounded-2xl flex flex-col items-center gap-3 cursor-pointer group hover:bg-blue-50 transition-colors">
                 <div className="w-12 h-12 rounded-full bg-[#e6f4ff] text-[#2a81d4] flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                   <HelpCircle className="w-6 h-6" />
                 </div>
-                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Pusat<br/>Bantuan</span>
+                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Pusat<br />Bantuan</span>
               </div>
             </div>
           </div>
@@ -1418,25 +1428,25 @@ export default function App() {
       {activePopup === 'popup-layanan-komersial' && (
         <div className="fixed inset-0 z-[100] flex items-end justify-center">
           <div className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm transition-opacity cursor-pointer" onClick={() => togglePopup('popup-layanan-komersial')}></div>
-          
+
           <div className="relative w-full bg-white rounded-t-[32px] pt-4 pb-8 px-6 shadow-[0_-10px_50px_rgba(0,0,0,0.15)] flex flex-col animate-slide-up max-w-[480px]">
             <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6 cursor-pointer" onClick={() => togglePopup('popup-layanan-komersial')}></div>
             <h2 className="text-gray-800 font-extrabold text-[15px] mb-5 px-1 text-center">Menu Layanan Komersial</h2>
             <div className="grid grid-cols-2 gap-3">
-              <div 
+              <div
                 className="bg-[#f8fafc] border border-gray-100 p-4 rounded-2xl flex flex-col items-center gap-3 cursor-pointer group hover:bg-blue-50 transition-colors"
                 onClick={() => handleSetActiveTab('layanan_komersial')}
               >
                 <div className="w-12 h-12 rounded-full bg-[#e6f4ff] text-[#2a81d4] flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                   <Pointer className="w-6 h-6" />
                 </div>
-                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Layanan<br/>Komersial</span>
+                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Layanan<br />Komersial</span>
               </div>
               <div className="bg-[#f8fafc] border border-gray-100 p-4 rounded-2xl flex flex-col items-center gap-3 cursor-pointer group hover:bg-blue-50 transition-colors">
                 <div className="w-12 h-12 rounded-full bg-[#e6f4ff] text-[#2a81d4] flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                   <History className="w-6 h-6" />
                 </div>
-                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Riwayat Layanan<br/>Komersial</span>
+                <span className="text-[11px] font-extrabold text-gray-700 leading-tight text-center">Riwayat Layanan<br />Komersial</span>
               </div>
             </div>
           </div>
